@@ -1,6 +1,8 @@
 public abstract class Product {
-    private float price;
-    private String name;
+    protected float price;
+    protected String name;
+
+    Bouquet getComposite() { return (Bouquet) this; }
 
     public void display() {
         System.out.println("Article: " + name + " Price: " + price);
