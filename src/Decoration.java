@@ -1,2 +1,7 @@
-package PACKAGE_NAME;public class Decoration {
+public class Decoration extends Product{
+    private String name;
+
+    String getName(){
+      return name;
+    };
 }

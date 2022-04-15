@@ -1,4 +1,4 @@
-public class ShippigCompany {
+public class ShippingCompany {
     private String name;
 
     void ship(){
