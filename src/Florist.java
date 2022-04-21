@@ -5,20 +5,20 @@ public class Florist extends User {
     public Storage s;
     public ShippingCompany sc;
 
-    public void createProduct(){
-
+    public void createProduct() {
+        //todo
     }
 
     public void pickOrder(){
         Order currentorder = ol.getOrder();
     }
 
-    public void sendOrder(){
-
+    public void sendOrder() {
+        //todo
     }
 
-    public void callShippingCompany(){
-
+    public void callShippingCompany() {
+        //todo
     }
 
     public void fillOrder(){
@@ -27,7 +27,7 @@ public class Florist extends User {
 
             for(Product i : currentorder.getComponents() ){
                 Product currentproduct = s.getItem(i.getName());
-                
+
             }
         }
         else{

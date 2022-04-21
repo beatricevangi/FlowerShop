@@ -1,13 +1,10 @@
 public abstract class Product {
     protected float price;
-
     protected String name;
 
     Bouquet getComposite() { return (Bouquet) this; }
 
-    //protected Product clone(){
-    //  TODO
-    // }
+    //protected abstract Product clone();
 
     public String getName() {
         return name;

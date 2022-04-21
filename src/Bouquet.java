@@ -20,10 +20,17 @@ public class Bouquet extends Product{
     }
 
     @Override
-    protected Bouquet clone(){
-        Bouquet copy = new Bouquet(this.name);
-        for (Product i : this.childProduct){
-            //TODO rimaniamo a sentire frank i.clone();
+    protected Bouquet clone() {
+        Bouquet copy = new Bouquet(new String(this.name));
+        for (Product i : this.childProduct) {
+            if (i instanceof Flower){
+                Flower fc = ((Flower) i).clone();
+                copy.addItem(fc);
+            }
+            if (i instanceof Decoration){
+                Decoration dc = ((Decoration) i).clone();
+                copy.addItem(dc);
+            }
         }
         return copy;
     }

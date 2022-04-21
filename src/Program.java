@@ -1,4 +1,3 @@
-// TODO È UN SINGLETON
 public class Program {
     private OrderList ol = new OrderList();
     public static Program p = new Program();
@@ -38,6 +37,4 @@ public class Program {
     public void deleteOrder(){
         //TODO AAAAAAAAAA
     }
-
-
 }
