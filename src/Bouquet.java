@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+//con il composite potrei avere un Bouquet dato da un Bouquet e un fiore
+
 
 public class Bouquet extends Product{
     private String name;

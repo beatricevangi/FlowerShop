@@ -10,11 +10,11 @@ public class Catalog {
         return cat;
     }
 
-    public void addToCatalog(){
-        //TODO
+    public void addToCatalog(Product p){
+        c.add(p);
     }
 
     public void displayCatalog(){
-        //TODO
+        System.out.println(c);
     }
 }

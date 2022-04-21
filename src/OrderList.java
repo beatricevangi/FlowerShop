@@ -24,6 +24,14 @@ public class OrderList implements Subject {
         }
     }
 
+    public void printCustomerOrders(Customer c){
+        for(Order o : o){
+            if(o.getCostumer() == c){
+                o.displayOrder();
+            }
+        }
+    }
+
     @Override
     public void subscribe(Observer obs) {
         observers.add(obs);

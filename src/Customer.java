@@ -29,4 +29,12 @@ public class Customer {
         logged = true;
         System.out.println("Login completato con successo!");
     }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public String getAddress(){
+        return address;
+    }
 }

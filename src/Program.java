@@ -4,7 +4,7 @@ public class Program {
     public static Program p = new Program();
 
     public void createOrderManager(){
-        //TODO
+        //TODO AAAAAA
     }
 
     public void createCustomer(){
@@ -12,7 +12,8 @@ public class Program {
     }
 
     public void viewCatalog(){
-        //TODO
+        Catalog c = Catalog.getInstance();
+
     }
 
     public void login(){
@@ -20,12 +21,11 @@ public class Program {
     }
 
     public static Program getInstance(){
-        //TODO
         return p;
     }
 
     public void viewMyOrders(Customer c){
-        //TODO
+        ol.printCustomerOrders(c);
     }
 
     public void createOrder(){
