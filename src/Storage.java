@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Storage implements Subject{
@@ -9,17 +10,36 @@ public class Storage implements Subject{
 
     @Override
     public void notify(Object obj){
-        //TODO
+        for(Observer o : observers){
+            o.update(obj);
+        }
     }
 
     @Override
     public void subscribe(Observer o){
-        //TODO
+        observers.add(o);
     }
 
     @Override
     public void unsubscribe(Observer o) {
+        observers.remove(o);
+    }
+
+    public void getSuppFlowers(ArrayList<Flower> f){
         //TODO
     }
+
+    public void getSuppDecoration(ArrayList<Decoration> d){
+        //TODO
+    }
+
+    public Product getItem(){
+        // questo metodo verrà chiamato dal Fioraio, che possiede uno storage
+        return null;
+    }
+    //getFlowers
+
+
+
 
 }

@@ -10,6 +10,7 @@ public class OrderList implements Subject {
 
     public void putOrder(Order o) {
         this.o.add(o);
+        notify(o.getCostumer());
     }
 
     public void removeOrder(Order o) {
