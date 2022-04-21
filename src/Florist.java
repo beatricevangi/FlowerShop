@@ -10,7 +10,7 @@ public class Florist extends User {
     }
 
     public void pickOrder(){
-
+        Order currentorder = ol.getOrder();
     }
 
     public void sendOrder(){
@@ -21,8 +21,18 @@ public class Florist extends User {
 
     }
 
-    public void doOrder(){
+    public void fillOrder(){
+        pickOrder();
+        if (currentorder != null){
 
+            for(Product i : currentorder.getComponents() ){
+                Product currentproduct = s.getItem(i.getName());
+                
+            }
+        }
+        else{
+            System.out.println("Non ci sono ordini da processare.");
+        }
     }
 
 }

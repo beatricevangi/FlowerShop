@@ -6,9 +6,6 @@ public class Flower extends Product{
         this.name = name;
     }
 
-    String getName(){
-        return name;
-    }
 
     @Override
     protected Flower clone(){

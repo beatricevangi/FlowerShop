@@ -3,7 +3,7 @@ public class Program {
     private OrderList ol = new OrderList();
     public static Program p = new Program();
 
-    public void createOrderManager(){
+    public void createCatalog(){
         //TODO AAAAAA
     }
 

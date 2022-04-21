@@ -5,6 +5,14 @@ public abstract class Product {
 
     Bouquet getComposite() { return (Bouquet) this; }
 
+    //protected Product clone(){
+    //  TODO
+    // }
+
+    public String getName() {
+        return name;
+    }
+
     public float getPrice() {
         return price;
     }

@@ -5,7 +5,7 @@ public class Storage implements Subject{
     private ArrayList<Pair<String, Integer>> quantity;
     private ArrayList<Pair<String, Boolean>> sufficient;
     public ArrayList<Observer> observers;
-    //TODO array list mi raccomando
+    private ArrayList<Product> storage;
     int minimum = 15;
 
     @Override
@@ -44,6 +44,15 @@ public class Storage implements Subject{
         System.out.println("Non c'è nessun cazzo qua");
         return null;
     }
-    //getFlowers
+
+    public void refresh(String name){
+        for(int i = 0; i < quantity.size(); i++ ){
+            if (name == quantity.get(i).first){
+                quantity.get(i).second--;
+                //TODO notify!!!
+            }
+        }
+    }
+
 
 }

@@ -40,6 +40,10 @@ public class Order {
         System.out.println("STATUS: " + status);
     }
 
+    public boolean isComplete(){
+        return isComplete;
+    }
+
     void setComplete(boolean c){
         isComplete = c;
     }
@@ -49,5 +53,9 @@ public class Order {
         Product p = c.getProduct(num);
         articles.add(p);
         subtotal += p.getPrice();
+    }
+
+    ArrayList<Product> getComponents(){
+        return articles;
     }
 }

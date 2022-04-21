@@ -15,7 +15,17 @@ public class Bouquet extends Product{
         this.childProduct = new ArrayList<>();
     }
 
-    String getName(){
-        return name;
+    public void addItem(Product p){
+        childProduct.add(p);
     }
+
+    @Override
+    protected Bouquet clone(){
+        Bouquet copy = new Bouquet(this.name);
+        for (Product i : this.childProduct){
+            //TODO rimaniamo a sentire frank i.clone();
+        }
+        return copy;
+    }
+
 }

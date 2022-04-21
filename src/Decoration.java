@@ -6,11 +6,6 @@ public class Decoration extends Product{
         this.name = name;
     }
 
-    String getName(){
-        return name;
-    }
-
-
     @Override
     protected Decoration clone(){
         Decoration copy = new Decoration(this.name, this.price);

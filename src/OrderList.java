@@ -4,8 +4,17 @@ public class OrderList implements Subject {
     private ArrayList<Observer> observers = new ArrayList<>();
     private ArrayList<Order> o = new ArrayList<>();
 
-    public ArrayList<Order> getOrder() {
-        return o;
+    public Order getOrder() {
+        int count = 0;
+        for (Order order : o){
+            if (order.isComplete()){
+                count++;
+            }
+            else{
+                return o.get(count);
+            }
+        }
+        return null;
     }
 
     public void putOrder(Order o) {
