@@ -14,6 +14,12 @@ public class Catalog {
     }
 
     public void displayCatalog(){
-        System.out.println(c);
+        for (Product item : c){
+            item.display();
+        }
+    }
+
+    public Product getProduct(int num){
+        return c.get(num - 1);
     }
 }

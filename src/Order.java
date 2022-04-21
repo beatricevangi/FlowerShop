@@ -1,17 +1,22 @@
 
 import java.util.ArrayList;
 
+
 public class Order {
     private int id;
     private float subtotal;
     private boolean isComplete;
     private Customer c;
-    private ArrayList<Pair<Product, Integer>> pairArticles;
+    private ArrayList<Product> articles;
     private String status;
+    static int idCounter = 0;
 
-    Order(){
+    Order(Customer c){
         isComplete = false;
         status = "processing";
+        subtotal = 0;
+        id = idCounter;
+        idCounter ++;
     }
 
     public int getId() {
@@ -39,13 +44,10 @@ public class Order {
         isComplete = c;
     }
 
-    void addProduct(Product p){
-        for(Pair<Product, Integer> pair : pairArticles){
-            if(pair.first == p){
-                pair.second = pair.second + 1;
-            }
-        }
-
-        //TODO forse c'è da passare anche una quantità oppure direttamente pair in input
+    void addProduct(int num){
+        Catalog c = Catalog.getInstance();
+        Product p = c.getProduct(num);
+        articles.add(p);
+        subtotal += p.getPrice();
     }
 }

@@ -10,9 +10,6 @@ public class Decoration extends Product{
         return name;
     }
 
-    float getPrice(){
-        return price;
-    }
 
     @Override
     protected Decoration clone(){

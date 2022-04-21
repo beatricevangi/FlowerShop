@@ -13,7 +13,25 @@ public class Customer extends User{
     }
 
     public void createOrder(){
-        //TODO
+        boolean notFinished = true;
+        if(logged){
+            Order newOrder = new Order(this);
+            while(notFinished){
+                int num = chooseProduct();
+                newOrder.addProduct(num);
+                System.out.println("Prodotto aggiunto all'ordine. Vuoi aggiungere altro? (y/n) ");
+                Scanner input = new Scanner(System.in);
+                char c = input.findInLine(".").charAt(0);
+                if (c == 'n'){
+                    notFinished = false;
+                }
+            }
+            Program p = Program.getInstance();
+            p.pushOrder(newOrder);
+        }
+        else{
+            System.out.println("Devi prima autenticarti.");
+        }
     }
 
     public int chooseProduct() {

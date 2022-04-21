@@ -27,8 +27,8 @@ public class Program {
         ol.printCustomerOrders(c);
     }
 
-    public void createOrder(){
-        //TODO
+    public void pushOrder(Order o){
+        ol.putOrder(o);
     }
 
     public void completeOrder(){
