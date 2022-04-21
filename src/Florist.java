@@ -9,7 +9,7 @@ public class Florist extends User {
         //todo
     }
 
-    public void pickOrder(){
+    public void pickOrder() {
         Order currentorder = ol.getOrder();
     }
 
@@ -21,16 +21,16 @@ public class Florist extends User {
         //todo
     }
 
-    public void fillOrder(){
+    public void fillOrder() {
         pickOrder();
-        if (currentorder != null){
+        if (currentorder != null) {
 
-            for(Product i : currentorder.getComponents() ){
+            for (Product i : currentorder.getComponents()) {
+                // todo controllare se è un bouquet o un flower o un decoration.
                 Product currentproduct = s.getItem(i.getName());
 
             }
-        }
-        else{
+        } else {
             System.out.println("Non ci sono ordini da processare.");
         }
     }

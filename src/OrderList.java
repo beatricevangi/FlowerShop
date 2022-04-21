@@ -6,11 +6,10 @@ public class OrderList implements Subject {
 
     public Order getOrder() {
         int count = 0;
-        for (Order order : o){
-            if (order.isComplete()){
+        for (Order order : o) {
+            if (order.isComplete()) {
                 count++;
-            }
-            else{
+            } else {
                 return o.get(count);
             }
         }
@@ -33,9 +32,9 @@ public class OrderList implements Subject {
         }
     }
 
-    public void printCustomerOrders(Customer c){
-        for(Order o : o){
-            if(o.getCostumer() == c){
+    public void printCustomerOrders(Customer c) {
+        for (Order o : o) {
+            if (o.getCostumer() == c) {
                 o.displayOrder();
             }
         }

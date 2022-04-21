@@ -14,6 +14,7 @@ public abstract class Product {
         return price;
     }
 
+
     public void display() {
         System.out.println("Article: " + name + " Price: " + price);
     }

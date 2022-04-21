@@ -8,7 +8,7 @@ public class Decoration extends Product{
 
     @Override
     protected Decoration clone(){
-        Decoration copy = new Decoration(this.name, this.price);
+        Decoration copy = new Decoration(new String(this.name), new Float(this.price));
         return copy;
     }
 }
