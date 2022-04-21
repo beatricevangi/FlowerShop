@@ -1,5 +1,6 @@
-public class Customer {
-    private String email;
+import java.util.Scanner;
+
+public class Customer extends User{
     private String address;
     private boolean logged;
 
@@ -13,6 +14,15 @@ public class Customer {
 
     public void createOrder(){
         //TODO
+    }
+
+    public int chooseProduct() {
+        Catalog c = Catalog.getInstance();
+        c.displayCatalog();
+        System.out.println("Che prodotto vuoi aggiungere all'ordine?");
+        Scanner input = new Scanner(System.in);
+        int number = input.nextInt();
+        return number;
     }
 
     public void myOrders(){

@@ -1,9 +1,8 @@
 
-public class Florist {
+public class Florist extends User {
     public OrderList ol;
     public Order currentorder;
     public Storage s;
-    public Catalog c;
     public ShippingCompany sc;
 
     public void createCatalog(){

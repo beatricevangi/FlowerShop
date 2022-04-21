@@ -13,7 +13,6 @@ public class Program {
 
     public void viewCatalog(){
         Catalog c = Catalog.getInstance();
-
     }
 
     public void login(){

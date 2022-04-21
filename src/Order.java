@@ -31,7 +31,7 @@ public class Order {
     public void displayOrder(){
         System.out.println("ID: " + id);
         System.out.println("COSTUMER: " +  id);
-        System.out.println("CONTENT:  " +  pairArticles);
+        System.out.println("CONTENT:  " +  articles);
         System.out.println("STATUS: " + status);
     }
 

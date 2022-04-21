@@ -10,10 +10,6 @@ public class Flower extends Product{
         return name;
     }
 
-    float getPrice(){
-        return price;
-    }
-
     @Override
     protected Flower clone(){
         Flower copy = new Flower(this.name, this.price);

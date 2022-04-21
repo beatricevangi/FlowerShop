@@ -4,6 +4,10 @@ public abstract class Product {
 
     Bouquet getComposite() { return (Bouquet) this; }
 
+    public float getPrice() {
+        return price;
+    }
+
     public void display() {
         System.out.println("Article: " + name + " Price: " + price);
     }
