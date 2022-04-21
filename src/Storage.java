@@ -33,8 +33,15 @@ public class Storage implements Subject{
         //TODO
     }
 
-    public Product getItem(){
-        // questo metodo verrà chiamato dal Fioraio, che possiede uno storage
+    public Product getItem(String name){
+        for (Product i : storage){
+            if(i.getName() == name){
+                storage.remove(i);
+                refresh(i.getName());
+                return i;
+            }
+        }
+        System.out.println("Non c'è nessun cazzo qua");
         return null;
     }
     //getFlowers

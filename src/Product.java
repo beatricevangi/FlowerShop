@@ -1,5 +1,6 @@
 public abstract class Product {
     protected float price;
+
     protected String name;
 
     Bouquet getComposite() { return (Bouquet) this; }

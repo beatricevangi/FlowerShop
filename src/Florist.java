@@ -5,10 +5,6 @@ public class Florist extends User {
     public Storage s;
     public ShippingCompany sc;
 
-    public void createCatalog(){
-
-    }
-
     public void createProduct(){
 
     }
