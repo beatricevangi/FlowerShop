@@ -3,15 +3,30 @@ public class Customer {
     private String address;
     private boolean logged;
 
-    void createOrder(){
+    private Order o;
+
+    public Customer(String email, String address, String logged){
+        this.email = email;
+        this.address = address;
+        this.logged = false;
+    }
+
+    public void createOrder(){
         //TODO
     }
 
-    void myOrders(){
-        //TODO
+    public void myOrders(){
+        if(logged) {
+            Program p = Program.getInstance();
+            p.viewMyOrders(this);
+        }
+        else{
+            System.out.println("Devi prima autenticarti.");
+        }
     }
 
-    void login(){
-        //TODO
+    public void login(){
+        logged = true;
+        System.out.println("Login completato con successo!");
     }
 }

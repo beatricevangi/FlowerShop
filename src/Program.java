@@ -28,5 +28,17 @@ public class Program {
         //TODO
     }
 
+    public void createOrder(){
+        //TODO
+    }
+
+    public void completeOrder(){
+        //TODO
+    }
+
+    public void deleteOrder(){
+        //TODO AAAAAAAAAA
+    }
+
 
 }
