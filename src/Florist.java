@@ -18,7 +18,7 @@ public class Florist extends User {
     }
 
     public void callShippingCompany() {
-        //todo
+        sc.schedulePickUp();
     }
 
     public void fillOrder() {
@@ -26,9 +26,17 @@ public class Florist extends User {
         if (currentorder != null) {
 
             for (Product i : currentorder.getComponents()) {
-                // todo controllare se è un bouquet o un flower o un decoration.
-                Product currentproduct = s.getItem(i.getName());
-
+                if (i instanceof Flower || i instanceof Decoration) {
+                    box.pack(s.getItem(i.getName()));
+                } else {
+                    Bouquet b = new Bouquet(new String(i.getName()));
+                    // in questo caso abbiamo un Bouquet
+                    for (int itr = 0; itr < ((Bouquet) i).getSize(); itr++) {
+                        Product tmp = ((Bouquet) i).getItem(itr);
+                        b.addItem(s.getItem(tmp.getName()));
+                    }
+                    box.pack(b);
+                }
             }
         } else {
             System.out.println("Non ci sono ordini da processare.");

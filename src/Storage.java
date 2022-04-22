@@ -53,6 +53,4 @@ public class Storage implements Subject{
             }
         }
     }
-
-
 }

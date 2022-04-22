@@ -1,8 +1,14 @@
 public class ShippingCompany {
     private String name;
 
-    void ship(){
-        System.out.print("Ci pensa Bartolini!");
-        // TODO mah qua anche niente però decidere visibilità
+    public void ship(Box b){
+        try {
+            b.setOrderStatus("Shipped");
+            System.out.print("Ci pensa Bartolini!");
+            System.out.wait(1000);
+            b.setOrderStatus("Delivered");
+        }catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
