@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 
 public class Catalog {
-    private ArrayList<Product> c = new ArrayList<>();
+    private ArrayList<Product> floristcat = new ArrayList<Product>();
+    private ArrayList<Product> suppliercat = new ArrayList<Product>();
 
-    Catalog(){}
+    Catalog(){
+        //TODO
+    }
 
     public static Catalog cat = new Catalog();
 

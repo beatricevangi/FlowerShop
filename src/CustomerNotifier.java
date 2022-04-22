@@ -4,9 +4,9 @@ public class CustomerNotifier implements Observer {
     private OrderList ol;
 
     @Override
-    public void update(Object obj) {
+    public void update(Object name) {
         System.out.println("Email in arrivo!" );
-        if (obj == null){
+        if (name == null){
             //TODO email
             //sendMail(str = " ", c);
         }

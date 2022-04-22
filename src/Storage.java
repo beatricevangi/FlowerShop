@@ -3,15 +3,15 @@ import java.util.ArrayList;
 
 public class Storage implements Subject{
     private ArrayList<Pair<String, Integer>> quantity;
-    private ArrayList<Pair<String, Boolean>> sufficient;
+    //private ArrayList<Pair<String, Boolean>> sufficient;
     public ArrayList<Observer> observers;
     private ArrayList<Product> storage;
     int minimum = 15;
 
     @Override
-    public void notify(Object obj){
+    public void notify(Object name){
         for(Observer o : observers){
-            o.update(obj);
+            o.update(name);
         }
     }
 
@@ -25,12 +25,14 @@ public class Storage implements Subject{
         observers.remove(o);
     }
 
-    public void getSuppFlowers(ArrayList<Flower> f){
+    public void getSuppProducts(ArrayList<Flower> f){
         //TODO
     }
 
-    public void getSuppDecoration(ArrayList<Decoration> d){
-        //TODO
+    public void restock(Product p){
+        //TODO: se si vuole fare incremento va fatto qui
+
+        storage.add(p);
     }
 
     public Product getItem(String name){
@@ -49,7 +51,9 @@ public class Storage implements Subject{
         for(int i = 0; i < quantity.size(); i++ ){
             if (name == quantity.get(i).first){
                 quantity.get(i).second--;
-                //TODO notify!!!
+                if (quantity.get(i).second < minimum){
+                    notify(quantity.get(i).first);
+                }
             }
         }
     }
