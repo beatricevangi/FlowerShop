@@ -5,8 +5,6 @@ public class Bouquet extends Product {
     private String name;
     private ArrayList<Product> childProduct;
 
-    public void add(Product p) {
-    }
 
     final Bouquet getComposite() {
         return this;
@@ -21,7 +19,15 @@ public class Bouquet extends Product {
         childProduct.add(p);
         this.price += p.getPrice();
     }
- 
+
+    public Product getItem(int i){
+       return childProduct.get(i);
+    }
+
+    public int getSize(){
+        return childProduct.size();
+    }
+
     @Override
     protected Bouquet clone() {
         Bouquet copy = new Bouquet(new String(this.name));

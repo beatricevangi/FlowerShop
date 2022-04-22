@@ -11,4 +11,13 @@ public class ShippingCompany {
             throw new RuntimeException(e);
         }
     }
+
+    public void schedulePickUp() {
+        try {
+            System.out.println("Fissato il ritiro");
+            System.out.wait(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

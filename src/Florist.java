@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Florist extends User {
     public OrderList ol;
@@ -5,16 +7,13 @@ public class Florist extends User {
     public Storage s;
     public ShippingCompany sc;
 
-    public void createProduct() {
-        //todo
-    }
-
     public void pickOrder() {
         Order currentorder = ol.getOrder();
     }
 
-    public void sendOrder() {
-        //todo
+    public void sendOrder(Box b) {
+            callShippingCompany();
+            sc.ship(b);
     }
 
     public void callShippingCompany() {
@@ -24,7 +23,7 @@ public class Florist extends User {
     public void fillOrder() {
         pickOrder();
         if (currentorder != null) {
-
+            Box box = new Box(currentorder);
             for (Product i : currentorder.getComponents()) {
                 if (i instanceof Flower || i instanceof Decoration) {
                     box.pack(s.getItem(i.getName()));
@@ -38,9 +37,13 @@ public class Florist extends User {
                     box.pack(b);
                 }
             }
+            box.close();
+            currentorder.setComplete(true);
+            currentorder.setStatus("Ready");
+            System.out.println("L'ordine " + currentorder.getId() + " è stato completato.");
+            sendOrder(box);
         } else {
             System.out.println("Non ci sono ordini da processare.");
         }
     }
-
 }

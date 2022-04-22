@@ -30,6 +30,10 @@ public class Order {
         return status;
     }
 
+    public void setStatus(String str){
+        status = str;
+    }
+
     public Customer getCostumer(){ return c; }
 
     public void displayOrder(){
