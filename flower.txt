@@ -1,0 +1,11 @@
+rose
+5
+peony
+3
+tulip
+4
+gardenia
+3
+lily
+3.50
+
