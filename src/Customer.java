@@ -17,8 +17,7 @@ public class Customer extends User{
         if(logged){
             Order newOrder = new Order(this);
             while(notFinished){
-                int num = chooseProduct();
-                newOrder.addProduct(num);
+                newOrder.addProduct(chooseProduct());
                 System.out.println("Prodotto aggiunto all'ordine. Vuoi aggiungere altro? (y/n) ");
                 Scanner input = new Scanner(System.in);
                 char c = input.findInLine(".").charAt(0);

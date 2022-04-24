@@ -14,9 +14,9 @@ public class Catalog {
             while (scan.hasNextLine()) {
                 String line1 = scan.nextLine();
                 System.out.println(line1);
-                Float line2 = scan.nextFloat();
+                float line2 = scan.nextFloat();
                 Flower f = new Flower(line1, line2);
-                Flower f2 = new Flower(line1, line2*(float)0.35);
+                Flower f2 = new Flower(line1, line2 * (float) 0.35);
                 addToFloristCatalog(f);
                 addToSupplierCatalog(f2);
             }
@@ -27,7 +27,7 @@ public class Catalog {
                 System.out.println(line1);
                 float line2 = scan.nextFloat();
                 Decoration d = new Decoration(line1, line2);
-                Decoration d2 = new Decoration(line1, line2*(float)0.35);
+                Decoration d2 = new Decoration(line1, line2 * (float) 0.35);
                 addToFloristCatalog(d);
                 addToSupplierCatalog(d2);
             }
@@ -50,9 +50,9 @@ public class Catalog {
         Scanner scan = new Scanner(new File(s));
         String firstline = scan.nextLine();
         Bouquet b = new Bouquet(firstline);
-        while (scan.hasNextLine()){
+        while (scan.hasNextLine()) {
             String line = scan.nextLine();
-            Product item = cloneCatalogItem(line);
+            Product item = cloneCatalogItem(line, true);
             b.addItem(item);
         }
         addToFloristCatalog(b);

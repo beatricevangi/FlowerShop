@@ -1,20 +1,35 @@
+import java.util.ArrayList;
+
 public class Program {
     private OrderList ol = new OrderList();
     public static Program p = new Program();
+    private final ArrayList<User> users;
+
+
+    private User currentUser;
+    private Menu menu;
+
+    public Program(){
+        currentUser = null;
+        users = new ArrayList<User>();
+        menu = null;
+    }
+
+
+    void setMenu(Menu menu) {
+        this.menu = menu;
+    }
 
     public void createCatalog(){
-        //TODO AAAAAA
+        //TODO
     }
 
     public void createCustomer(){
         //TODO
     }
 
-    public void viewCatalog(){
-        Catalog c = Catalog.getInstance();
-    }
 
-    public void login(){
+    public void login(String name, String pass){
         //TODO
     }
 
@@ -30,11 +45,9 @@ public class Program {
         ol.putOrder(o);
     }
 
-    public void completeOrder(){
-        //TODO
+    public User getCurrentUser() {
+        return currentUser;
     }
 
-    public void deleteOrder(){
-        //TODO AAAAAAAAAA
-    }
+    public void deleteOrder(){}
 }
