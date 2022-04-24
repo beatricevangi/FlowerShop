@@ -36,10 +36,11 @@ public class Storage implements Subject{
     }
 
     public Product getItem(String name){
+        //chiamato da fioraio per prendere imgridietnz
         for (Product i : storage){
             if(i.getName() == name){
                 storage.remove(i);
-                refresh(i.getName());
+                refresh(i.getName(), "remove");
                 return i;
             }
         }

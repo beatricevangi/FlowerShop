@@ -24,24 +24,13 @@ public class Supplier implements Observer{
         s.subscribe(this);
     }
 
-    public void sendItem(Object obj){
-        Flower f = null;
-        Decoration d = null;
-        //TODO:una volta sistemato il catalogo o arrayList procedere a controllare i nomi e clonare
-        if(obj.getClass().getName() == f.getClass().getName()){
-            ArrayList<Flower> flowers = null;
-            for(int tmp = 0; tmp<100; tmp++) {
-                f = ((Flower)obj).clone();
-                flowers.add(f);
-            }
+    public void sendItem(String str) {
+        // obj in realtà sarà una stringa che è il nome del fiore che mandiamo
+        Catalog c = Catalog.getInstance();
+        for (int tmp = 0; tmp < 100; tmp++) {
+            Product p = c.cloneCatalogItem(str, false);
+            p.setPrice(p.getPrice()/(float)0.35);
+            s.restock(p);
         }
-        if(obj.getClass().getName() == d.getClass().getName()) {
-            ArrayList<Decoration> decorations = null;
-            for (int tmp = 0; tmp < 100; tmp++) {
-                d = ((Decoration) obj).clone();
-                decorations.add(d);
-            }
-        }
-        s.getSuppProducts();
     }
 }

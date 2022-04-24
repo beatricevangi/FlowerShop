@@ -7,9 +7,10 @@ public class Catalog {
     private ArrayList<Product> suppliercat = new ArrayList<Product>();
 
     Catalog() {
+        Scanner scan = null;
         try {
             String fileFlower = "flower.txt";
-            Scanner scan = new Scanner(new File(fileFlower));
+            scan = new Scanner(new File(fileFlower));
             while (scan.hasNextLine()) {
                 String line1 = scan.nextLine();
                 System.out.println(line1);
@@ -24,7 +25,7 @@ public class Catalog {
             while (scan.hasNextLine()) {
                 String line1 = scan.nextLine();
                 System.out.println(line1);
-                Float line2 = scan.nextFloat();
+                float line2 = scan.nextFloat();
                 Decoration d = new Decoration(line1, line2);
                 Decoration d2 = new Decoration(line1, line2*(float)0.35);
                 addToFloristCatalog(d);
@@ -38,7 +39,11 @@ public class Catalog {
             addBouquetToCatalog("valentine.txt");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
+        } finally {
+            if (scan != null)
+                scan.close();
         }
+
     }
 
     public void addBouquetToCatalog(String s) throws FileNotFoundException {
@@ -79,22 +84,26 @@ public class Catalog {
         }
     }
 
-    public Product cloneCatalogItem(String s){
-        Product c = null;
-        for(Product p : floristcat){
-            if(p.getName() == s){
-                if(p instanceof Flower){
-                    c = ((Flower) p).clone();
-                }
-                if(p instanceof Decoration){
-                    c = ((Decoration) p).clone();
-                }
-                else {
-                    c = ((Bouquet) p).clone();
+    public Product cloneCatalogItem(String s, boolean floristcat) {
+        Product copy = null;
+        ArrayList<Product> list;
+        if (floristcat) {
+            list = this.floristcat;
+        } else {
+            list = this.suppliercat;
+        }
+        for (Product p : list) {
+            if (Objects.equals(p.getName(), s)) {
+                if (p instanceof Flower) {
+                    copy = ((Flower) p).clone();
+                } else {
+                    if (p instanceof Decoration) {
+                        copy = ((Decoration) p).clone();
+                    }
                 }
             }
         }
-        return c;
+        return copy;
     }
 
     public Product getFloristProduct(int num) {

@@ -14,6 +14,9 @@ public abstract class Product {
         return price;
     }
 
+    public void setPrice(float price) {
+        this.price = price;
+    }
 
     public void display() {
         System.out.println("Article: " + name + " Price: " + price);

@@ -36,11 +36,10 @@ public class Customer extends User{
 
     public int chooseProduct() {
         Catalog c = Catalog.getInstance();
-        c.displayCatalog();
+        c.displayFloristCatalog();
         System.out.println("Che prodotto vuoi aggiungere all'ordine?");
         Scanner input = new Scanner(System.in);
-        int number = input.nextInt();
-        return number;
+        return input.nextInt();
     }
 
     public void myOrders(){
