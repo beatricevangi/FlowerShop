@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 
 public class Catalog {
     private ArrayList<Product> floristcat = new ArrayList<Product>();
@@ -16,6 +18,10 @@ public class Catalog {
 
     public void addToCatalog(Product p){
         c.add(p);
+    }
+
+    public void addToSupplierCatalog(Product p) {
+        suppliercat.add(p);
     }
 
     public void displayCatalog(){
