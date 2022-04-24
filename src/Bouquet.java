@@ -11,6 +11,7 @@ public class Bouquet extends Product {
     }
 
     public Bouquet(String name) {
+        this.price = 5;
         this.name = name;
         this.childProduct = new ArrayList<>();
     }
