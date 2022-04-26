@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
-public class LoginMenu implements Menu{
+public class LoginMenu implements Menu {
+
+    public LoginMenu() {
+    }
 
     @Override
     public void show() {
@@ -12,6 +15,7 @@ public class LoginMenu implements Menu{
         do {
             System.out.println("Menu option:");
             System.out.println("1. Login");
+            System.out.println("2. Sign in");
             System.out.println("0. Quit");
             System.out.print("Choose menu item: ");
             try {
@@ -22,6 +26,11 @@ public class LoginMenu implements Menu{
 
             System.out.println(menuItem);
             switch (menuItem) {
+
+                case 0:
+                    quit = true;
+                    break;
+
                 case 1:
                     System.out.println("Insert Email:");
                     String name = inLog.nextLine();
@@ -97,9 +106,5 @@ public class LoginMenu implements Menu{
         }
         if (!Program.getInstance().checkEmail(email))
             Program.getInstance().signIn(a, email, name, surname, address, pass);
-    }
-
-    public LoginMenu(){
-
     }
 }

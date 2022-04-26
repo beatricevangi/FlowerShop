@@ -2,10 +2,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Florist extends User {
-    public OrderList ol;
-    public Order currentorder;
-    public Storage s;
-    public ShippingCompany sc;
+    private OrderList ol;
+    private Order currentorder;
+    private Storage s;
+    private ShippingCompany sc;
 
     public Florist(String email, String name, String surname, String address, String pass, boolean log){
         this.email = email;

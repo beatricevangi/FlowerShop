@@ -13,6 +13,15 @@ public class Customer extends User{
         this.password = pass;
     }
 
+    public Customer(String email, String name, String surname, String address, String pass, boolean logged){
+        this.email = email;
+        this.name = name;
+        this.surname = surname;
+        this.address = address;
+        this.password = pass;
+        this.logged = logged;
+    }
+
     public void createOrder(){
         boolean notFinished = true;
         if(logged){

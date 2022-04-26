@@ -29,9 +29,28 @@ public class Program {
         //TODO
     }
 
+    public void run(){
+        //todo sistema quit
+        
+        while(!quit){
+            menu.show();
+        }
+    }
 
-    public void login(String name, String pass){
-        //TODO
+    public void login(String email, String pass){
+        for(User u : users){
+            if(u.getEmail() == email){
+                if(u.getPassword() == pass){
+                    System.out.println("Login effettuato con successo");
+                    u.setLogged(true);
+                    currentUser = getUser(email);
+                }
+                else{
+                    System.out.println("Password errata!");
+                    currentUser = null;
+                }
+            }
+        }
     }
 
     public void signIn(String category, String email, String name, String surname, String address, String pass){
@@ -69,6 +88,15 @@ public class Program {
 
     public User getCurrentUser() {
         return currentUser;
+    }
+
+    public User getUser(String email){
+        for(User u : users){
+            if(u.getEmail() == email){
+                return u;
+            }
+        }
+        return null;
     }
 
     public void deleteOrder(){}
