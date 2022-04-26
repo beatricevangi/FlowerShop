@@ -9,7 +9,7 @@ public class Supplier implements Observer {
 
     @Override
     public void update(Object str) {
-        System.out.println("Carico in arrivoo!");
+        System.out.println("Shipment coming in!");
         sendItem((String)str);
     }
     //https://medium.datadriveninvestor.com/design-patterns-a-quick-guide-to-observer-pattern-d0622145d6c2

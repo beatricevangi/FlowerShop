@@ -31,7 +31,7 @@ public class Program {
 
     public void run(){
         //todo sistema quit
-        
+
         while(!quit){
             menu.show();
         }
@@ -41,12 +41,12 @@ public class Program {
         for(User u : users){
             if(u.getEmail() == email){
                 if(u.getPassword() == pass){
-                    System.out.println("Login effettuato con successo");
+                    System.out.println("Successfully logged in");
                     u.setLogged(true);
                     currentUser = getUser(email);
                 }
                 else{
-                    System.out.println("Password errata!");
+                    System.out.println("Wrong password!");
                     currentUser = null;
                 }
             }

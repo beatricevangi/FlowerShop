@@ -46,7 +46,7 @@ public class Customer extends User{
     public int chooseProduct() {
         Catalog c = Catalog.getInstance();
         c.displayFloristCatalog();
-        System.out.println("Che prodotto vuoi aggiungere all'ordine?");
+        System.out.println("Select the number of the product to add to your order");
         Scanner input = new Scanner(System.in);
         return input.nextInt();
     }
@@ -59,11 +59,6 @@ public class Customer extends User{
         else{
             System.out.println("Devi prima autenticarti.");
         }
-    }
-
-    public void login(){
-        logged = true;
-        System.out.println("Login completato con successo!");
     }
 
     public String getEmail(){

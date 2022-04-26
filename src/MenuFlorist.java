@@ -6,30 +6,44 @@ public class MenuFlorist implements Menu{
     public void show() {
         //todo
         int menuItem;
-        Program p;
+        boolean logout = false;
+        Florist currentFlorist = null;
 
-        System.out.println("FLORIST SHOPPE è tuo bro, 6 della gang, rimani così, fedele alla strada ");
-        System.out.println("1: View OrderList");
-        System.out.println("2: ");
-
-
-        Scanner input = new Scanner(System.in);
-        menuItem = input.nextInt();
-
-        switch(menuItem){
-
-            case 1:
-                // TODO si apre il coso degli ordini fatti dall'utente
-                p = Program.getInstance();
-                // p.
-                break;
-
-            case 2:
-                // TODO si apre il coso per fare ordini
-                break;
-
-            default:
-                System.err.println("Input non valido");
+        if(Program.getInstance().getCurrentUser() instanceof Florist){
+            currentFlorist = (Florist) Program.getInstance().getCurrentUser();
         }
+        else {
+            Program.getInstance().setMenu(new LoginMenu());
+        }
+
+        do{
+            System.out.println("ready to sgobb, "+ currentFlorist.getName() +"? " +
+                    "FLORIST SHOPPE is yours bro, ur the gvng,  don't change, loyal to tha stryt");
+            System.out.println("1: fill order");
+            System.out.println("2: view order list");
+            System.out.println("0: logout");
+
+
+            Scanner input = new Scanner(System.in);
+            menuItem = input.nextInt();
+
+            switch(menuItem){
+                case 1:
+                    currentFlorist.fillOrder();
+                    break;
+
+                case 2:
+                    OrderList.getInstance().displayOrders();
+                    break;
+
+                case 0:
+                    logout = true;
+                    break;
+
+                default:
+                    System.err.println("Invalid input");
+            }
+        }
+        while(!logout);
     }
 }

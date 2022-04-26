@@ -8,15 +8,15 @@ public class LoginMenu implements Menu {
     @Override
     public void show() {
         Scanner in = new Scanner(System.in);
-        Scanner inLog = new Scanner(System.in); // questo a che serve boh
+        Scanner inLog = new Scanner(System.in);
         boolean quit = false; // questo x uscire dal menu
         int menuItem;
 
         do {
             System.out.println("Menu option:");
-            System.out.println("1. Login");
-            System.out.println("2. Sign in");
-            System.out.println("0. Quit");
+            System.out.println("1. login");
+            System.out.println("2. sign in");
+            System.out.println("0. quit");
             System.out.print("Choose menu item: ");
             try {
                 menuItem = Integer.parseInt(in.next());
@@ -101,7 +101,7 @@ public class LoginMenu implements Menu {
                 break;
 
             default:
-                System.err.println("Non puoi non essere né un fioraio né un cliente.");
+                System.err.println("You have to be either a florist or a customer.");
 
         }
         if (!Program.getInstance().checkEmail(email))

@@ -36,11 +36,16 @@ public class Order {
 
     public Customer getCostumer(){ return c; }
 
-    public void displayOrder(){
+    public void displayOrderFloristPOV(){
         System.out.println("ID: " + id);
-        System.out.println("COSTUMER: " +  id);
-        System.out.println("CONTENT:  " +  articles);
-        System.out.println("STATUS: " + status);
+        System.out.println("CUSTOMER: " +  c);
+        System.out.println("CONTENT:  ");
+        for(Product a : articles)
+            a.display();
+        if(isComplete)
+            System.out.println("\n COMPLETED");
+        else
+            System.out.println("TO BE DONE");
     }
 
     public boolean isComplete(){

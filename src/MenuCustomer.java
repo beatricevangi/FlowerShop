@@ -4,25 +4,31 @@ public class MenuCustomer implements Menu{
 
     @Override
     public void show() {
-        //todo
         int menuItem;
-        Program p;
+        boolean logout = false;
+        Customer currentCustomer = null;
 
-        System.out.println("FLORIST SHOPPE");
-        System.out.println("1: i miei ordini");
-        System.out.println("2: crea un ordine");
-        System.out.println("3: logout");
+        if(Program.getInstance().getCurrentUser() instanceof Customer){
+            currentCustomer = (Customer) Program.getInstance().getCurrentUser();
+        }
+        else {
+            Program.getInstance().setMenu(new LoginMenu());
+        }
 
+        do {
+            System.out.println("Welcome to the FLORIST SHOP, " + currentCustomer.getName());
+            System.out.println("1: my orders");
+            System.out.println("2: place an order");
+            System.out.println("3: logout");
 
-        Scanner input = new Scanner(System.in);
-        menuItem = input.nextInt();
+            Scanner input = new Scanner(System.in);
+            menuItem = input.nextInt();
 
-        switch(menuItem){
-            case 1:
-                // si apre menulogin
-                p = Program.getInstance();
-                p.setMenu(new LoginMenu());
-                break;
+            switch (menuItem) {
+                case 1:
+                    System.out.println("Here's your order list :)");
+                    OrderList.getInstance().printCustomerOrders(currentCustomer);
+                    break;
 
             case 2:
                 // TODO si apre il coso degli ordini fatti dall'utente

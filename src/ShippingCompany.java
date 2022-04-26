@@ -14,7 +14,7 @@ public class ShippingCompany {
 
     public void schedulePickUp() {
         try {
-            System.out.println("Fissato il ritiro");
+            System.out.println("Withdrawl scheduled");
             System.out.wait(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
