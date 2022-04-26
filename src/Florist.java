@@ -7,6 +7,14 @@ public class Florist extends User {
     public Storage s;
     public ShippingCompany sc;
 
+    public Florist(String email, String name, String surname, String address, String pass, boolean log){
+        this.email = email;
+        this.name = name;
+        this.surname = surname;
+        this.address = address;
+        this.password = pass;
+    }
+
     public void pickOrder() {
         Order currentorder = ol.getOrder();
     }

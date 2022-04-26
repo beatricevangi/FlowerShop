@@ -9,9 +9,9 @@ public class MenuCustomer implements Menu{
         Program p;
 
         System.out.println("FLORIST SHOPPE");
-        System.out.println("1: login");
-        System.out.println("2: i miei ordini");
-        System.out.println("3: crea un ordine");
+        System.out.println("1: i miei ordini");
+        System.out.println("2: crea un ordine");
+        System.out.println("3: logout");
 
 
         Scanner input = new Scanner(System.in);
