@@ -48,6 +48,15 @@ public class Order {
             System.out.println("TO BE DONE");
     }
 
+    public void displayOrderCustomerPOV(){
+        System.out.println("ID: " + id);
+        System.out.println("CONTENT:  " );
+        for(Product a : articles)
+            a.display();
+        System.out.println("SUBTOTAL" + subtotal);
+        System.out.println("STATUS: " + status);
+    }
+
     public boolean isComplete(){
         return isComplete;
     }
@@ -57,8 +66,7 @@ public class Order {
     }
 
     void addProduct(int num){
-        Catalog c = Catalog.getInstance();
-        Product p = c.getFloristProduct(num);
+        Product p = Catalog.getInstance().getFloristProduct(num);
         articles.add(p);
         subtotal += p.getPrice();
     }

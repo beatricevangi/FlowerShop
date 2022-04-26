@@ -30,19 +30,19 @@ public class MenuCustomer implements Menu{
                     OrderList.getInstance().printCustomerOrders(currentCustomer);
                     break;
 
-            case 2:
-                // TODO si apre il coso degli ordini fatti dall'utente
-                p = Program.getInstance();
-                // p.
-                break;
+                case 2:
+                    currentCustomer.createOrder();
+                    System.out.println("Order placed successfully.");
+                    break;
 
-            case 3:
-                // TODO si apre il coso per fare ordini
-                break;
+                case 3:
+                    logout = true;
+                    break;
 
-            default:
-                System.err.println("Input non valido");
-        }
+                default:
+                    System.err.println("Invalid input.");
+            }
+        } while(!logout);
     }
 
 }

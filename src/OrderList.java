@@ -2,7 +2,13 @@ import java.util.ArrayList;
 
 public class OrderList implements Subject {
     private ArrayList<Observer> observers = new ArrayList<>();
-    private ArrayList<Order> o = new ArrayList<>();
+    private ArrayList<Order> orders = new ArrayList<>();
+    public static OrderList ol = new OrderList();
+
+
+    public static synchronized OrderList getInstance(){
+        return ol;
+    }
 
     public Order getOrder() {
         int count = 0;
@@ -21,6 +27,13 @@ public class OrderList implements Subject {
         notify(o.getCostumer());
     }
 
+    public void displayOrders(){
+        System.out.println("Completati:");
+        for(Order o : orders){
+            o.displayOrderFloristPOV();
+        }
+    }
+
     public void removeOrder(Order o) {
         this.orders.remove(o);
     }
@@ -35,7 +48,7 @@ public class OrderList implements Subject {
     public void printCustomerOrders(Customer c) {
         for (Order o : orders) {
             if (o.getCostumer() == c) {
-                o.displayOrder();
+                o.displayOrderCustomerPOV();
             }
         }
     }

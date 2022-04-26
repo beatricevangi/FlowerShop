@@ -74,7 +74,7 @@ public class Program {
         return false;
     }
 
-    public static Program getInstance(){
+    public static synchronized Program getInstance(){
         return p;
     }
 

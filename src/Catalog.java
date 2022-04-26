@@ -5,6 +5,8 @@ import java.util.*;
 public class Catalog {
     private ArrayList<Product> floristcat = new ArrayList<Product>();
     private ArrayList<Product> suppliercat = new ArrayList<Product>();
+    public static Catalog cat = new Catalog();
+
 
     Catalog() {
         Scanner scan = null;
@@ -58,8 +60,6 @@ public class Catalog {
         addToFloristCatalog(b);
     }
 
-    public static Catalog cat = new Catalog();
-
     public static Catalog getInstance() {
         return cat;
     }
@@ -73,8 +73,12 @@ public class Catalog {
     }
 
     public void displayFloristCatalog() {
+        int i = 1;
         for (Product item : floristcat) {
+            System.out.println(i + ":");
             item.display();
+            System.out.println("\n");
+            i++;
         }
     }
 

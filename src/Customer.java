@@ -28,7 +28,7 @@ public class Customer extends User{
             Order newOrder = new Order(this);
             while(notFinished){
                 newOrder.addProduct(chooseProduct());
-                System.out.println("Prodotto aggiunto all'ordine. Vuoi aggiungere altro? (y/n) ");
+                System.out.println("Product added to the order. Would you like to add any other item? (y/n)");
                 Scanner input = new Scanner(System.in);
                 char c = input.findInLine(".").charAt(0);
                 if (c == 'n'){
@@ -39,7 +39,7 @@ public class Customer extends User{
             p.pushOrder(newOrder);
         }
         else{
-            System.out.println("Devi prima autenticarti.");
+            System.err.println("Authentication failed.");
         }
     }
 
@@ -53,11 +53,7 @@ public class Customer extends User{
 
     public void myOrders(){
         if(logged) {
-            Program p = Program.getInstance();
-            p.viewMyOrders(this);
-        }
-        else{
-            System.out.println("Devi prima autenticarti.");
+           OrderList.getInstance().printCustomerOrders(this);
         }
     }
 
