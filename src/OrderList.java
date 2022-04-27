@@ -5,7 +5,6 @@ public class OrderList implements Subject {
     private ArrayList<Order> orders = new ArrayList<>();
     public static OrderList ol = new OrderList();
 
-
     public static synchronized OrderList getInstance(){
         return ol;
     }

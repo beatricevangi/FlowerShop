@@ -8,7 +8,6 @@ public class Program {
     private final ArrayList<User> users;
     private User currentUser;
     private Menu menu;
-
     private boolean quit;
 
     public Program(){
@@ -37,10 +36,10 @@ public class Program {
         }
     }
 
-    public void login(String email, String pass){
+    public void login(String email, String encoded){
         for(User u : users){
             if(u.getEmail() == email){
-                if(u.getPassword() == pass){
+                if(u.getHashPass() == encoded){
                     System.out.println("Successfully logged in");
                     u.setLogged(true);
                     currentUser = getUser(email);
@@ -53,14 +52,14 @@ public class Program {
         }
     }
 
-    public void signIn(String category, String email, String name, String surname, String address, String pass){
+    public void signIn(String category, String email, String name, String surname, String address, String encoded){
         if (category == "customer"){
-            currentUser = new Customer(email, name, surname, address, pass, true);
+            currentUser = new Customer(email, name, surname, address, encoded, true);
             users.add(currentUser);
         }
 
         if(category == "florist"){
-            currentUser = new Florist(email, name, surname, address, pass, true);
+            currentUser = new Florist(email, name, surname, address, encoded, true);
             users.add(currentUser);
         }
     }

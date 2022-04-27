@@ -70,7 +70,7 @@ public class LoginMenu implements Menu {
         String email = null;
         String name = null;
         String surname = null;
-        String pass = null;
+        String pass;
         String address = null;
 
         switch (a) {
@@ -84,6 +84,7 @@ public class LoginMenu implements Menu {
                 surname = inLog.nextLine();
                 System.out.println("Insert Password: ");
                 pass = inLog.nextLine();
+                encoded = encode(pass);
                 break;
 
 
@@ -98,6 +99,7 @@ public class LoginMenu implements Menu {
                 address = inLog.nextLine();
                 System.out.println("Insert Password: ");
                 pass = inLog.nextLine();
+                encoded = encode(pass);
                 break;
 
             default:
@@ -105,6 +107,6 @@ public class LoginMenu implements Menu {
 
         }
         if (!Program.getInstance().checkEmail(email))
-            Program.getInstance().signIn(a, email, name, surname, address, pass);
+            Program.getInstance().signIn(a, email, name, surname, address, encoded);
     }
 }
