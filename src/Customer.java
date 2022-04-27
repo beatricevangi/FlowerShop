@@ -10,7 +10,7 @@ public class Customer extends User{
         this.name = name;
         this.surname = surname;
         this.address = address;
-        this.password = pass;
+        this.encodedpass = pass;
     }
 
     public Customer(String email, String name, String surname, String address, String pass, boolean logged){
@@ -18,7 +18,7 @@ public class Customer extends User{
         this.name = name;
         this.surname = surname;
         this.address = address;
-        this.password = pass;
+        this.encodedpass = pass;
         this.logged = logged;
     }
 

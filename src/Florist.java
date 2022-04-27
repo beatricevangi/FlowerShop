@@ -1,6 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 public class Florist extends User {
     private OrderList ol;
     private Order currentorder;
@@ -12,7 +9,7 @@ public class Florist extends User {
         this.name = name;
         this.surname = surname;
         this.address = address;
-        this.password = pass;
+        this.encodedpass = pass;
     }
 
     public void pickOrder() {

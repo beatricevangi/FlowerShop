@@ -12,6 +12,7 @@ public class MenuCustomer implements Menu{
             currentCustomer = (Customer) Program.getInstance().getCurrentUser();
         }
         else {
+            Program.getInstance().getCurrentUser().setLogged(false);
             Program.getInstance().setMenu(new LoginMenu());
         }
 
@@ -36,6 +37,7 @@ public class MenuCustomer implements Menu{
                     break;
 
                 case 3:
+                    currentCustomer.setLogged(false);
                     logout = true;
                     break;
 

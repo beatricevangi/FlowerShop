@@ -1,5 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Program {
@@ -31,10 +32,12 @@ public class Program {
     public void run(){
         //todo sistema quit
 
-        while(!quit){
-            menu.show();
-        }
+       //while(!quit){
+       //    menu.show();
+       //}
     }
+
+
 
     public void login(String email, String encoded){
         for(User u : users){
@@ -56,6 +59,7 @@ public class Program {
         if (category == "customer"){
             currentUser = new Customer(email, name, surname, address, encoded, true);
             users.add(currentUser);
+
         }
 
         if(category == "florist"){
@@ -63,6 +67,20 @@ public class Program {
             users.add(currentUser);
         }
     }
+
+    public void writeOnFile(FileWriter file, String email, String name, String surname, String address, String encode){
+      // file = new FileWriter(UserData);
+      // file.write(email+ "\n" + ||);
+
+
+       // Scanner scan = new Scanner(new File());//String firstline = scan.nextLine();
+    }
+
+
+
+
+
+
 
     public boolean checkEmail(String str){
         for(User u : users){

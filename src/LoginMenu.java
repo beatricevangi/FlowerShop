@@ -1,9 +1,22 @@
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class LoginMenu implements Menu {
 
+    MessageDigest md;
     public LoginMenu() {
+        try {
+            md = MessageDigest.getInstance("SHA-256");
+
+        }
+        catch (NoSuchAlgorithmException e){
+            System.err.print("ERROR");
+        }
     }
+
+
 
     @Override
     public void show() {
@@ -11,7 +24,6 @@ public class LoginMenu implements Menu {
         Scanner inLog = new Scanner(System.in);
         boolean quit = false; // questo x uscire dal menu
         int menuItem;
-
         do {
             System.out.println("Menu option:");
             System.out.println("1. login");
@@ -40,7 +52,7 @@ public class LoginMenu implements Menu {
                     while (Program.getInstance().getCurrentUser() == null) {
                         System.out.println("Insert Password:");
                         String pass = inLog.nextLine();
-                        Program.getInstance().login(name, pass);
+                        Program.getInstance().login(name, encode(pass));
                     }
                     quit = true;
                     break;
@@ -72,6 +84,7 @@ public class LoginMenu implements Menu {
         String surname = null;
         String pass;
         String address = null;
+        String encoded = null;
 
         switch (a) {
 
@@ -108,5 +121,16 @@ public class LoginMenu implements Menu {
         }
         if (!Program.getInstance().checkEmail(email))
             Program.getInstance().signIn(a, email, name, surname, address, encoded);
+    }
+
+    private String encode(String password){
+        md.update(password.getBytes());
+        byte[] messageDigestSHA256 = md.digest();
+        StringBuilder stringBuffer = new StringBuilder();
+        for (byte bytes : messageDigestSHA256) {
+            stringBuffer.append(String.format("%02x", bytes & 0xff));
+        }
+        String encoded = stringBuffer.toString();
+        return encoded;
     }
 }

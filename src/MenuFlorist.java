@@ -13,6 +13,7 @@ public class MenuFlorist implements Menu{
             currentFlorist = (Florist) Program.getInstance().getCurrentUser();
         }
         else {
+            Program.getInstance().getCurrentUser().setLogged(false);
             Program.getInstance().setMenu(new LoginMenu());
         }
 
