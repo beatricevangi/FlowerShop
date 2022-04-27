@@ -28,8 +28,7 @@ public class Customer extends User{
                     notFinished = false;
                 }
             }
-            Program p = Program.getInstance();
-            p.pushOrder(newOrder);
+            OrderList.getInstance().putOrder(newOrder);
         }
         else{
             System.err.println("Authentication failed.");

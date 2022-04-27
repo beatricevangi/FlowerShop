@@ -2,6 +2,7 @@ import java.io.*;
 import java.io.IOException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Program {
@@ -16,6 +17,28 @@ public class Program {
         currentUser = null;
         users = new ArrayList<User>();
         menu = null;
+
+        String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/users.csv";
+        try {
+            BufferedReader csvReader = new BufferedReader(new FileReader(pathToCSV));
+            String row = csvReader.readLine();
+            while ((row) != null) {
+                String[] data = row.split(", ");
+                if (data[0] == "florist") {
+                    Florist f = new Florist(data[1], data[2], data[3], data[4], data[5], false);
+                    users.add(f);
+                }
+                if (data[0] == "customer") {
+                    Customer c = new Customer(data[1], data[2], data[3], data[4], data[5], false);
+                    users.add(c);
+                }
+                //System.out.print(Arrays.toString(data) + "\n");
+                row = csvReader.readLine();
+            }
+            csvReader.close();
+        } catch (IOException e) {
+            System.err.println("Error");
+        }
     }
 
     void setMenu(Menu menu) {
@@ -26,10 +49,6 @@ public class Program {
         //TODO
     }
 
-    public void createCustomer(){
-        //TODO
-    }
-
     public void run(){
         //todo sistema quit
 
@@ -37,7 +56,6 @@ public class Program {
        //    menu.show();
        //}
     }
-
 
 
     public void login(String email, String encoded){
@@ -67,7 +85,10 @@ public class Program {
             currentUser = new Florist(email, name, surname, address, encoded, true);
             users.add(currentUser);
         }
-        writeOnFile(category, email, name, surname, address, encoded);
+        // writeOnFile(category, email, name, surname, address, encoded);
+        // TO DO
+        //writeOnCSV(category, email, name, surname, address, encoded, cuid);
+
     }
 
     public void writeOnFile(String category, String email, String name, String surname, String address, String encoded){
@@ -89,14 +110,7 @@ public class Program {
         } catch (IOException e){
             System.err.println("ERROR");
         }
-
-
     }
-
-
-
-
-
 
 
     public boolean checkEmail(String str){
@@ -112,13 +126,6 @@ public class Program {
         return p;
     }
 
-    public void viewMyOrders(Customer c){
-        ol.printCustomerOrders(c);
-    }
-
-    public void pushOrder(Order o){
-        ol.putOrder(o);
-    }
 
     public User getCurrentUser() {
         return currentUser;
@@ -133,5 +140,7 @@ public class Program {
         return null;
     }
 
-    public void deleteOrder(){}
+    public int getNumUsers(){
+        return users.size();
+    }
 }
