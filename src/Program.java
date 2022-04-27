@@ -1,5 +1,6 @@
-import java.io.File;
-import java.io.FileWriter;
+import java.io.*;
+import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -69,12 +70,27 @@ public class Program {
         writeOnFile(category, email, name, surname, address, encoded);
     }
 
-    public void writeOnFile(FileWriter file, String email, String name, String surname, String address, String encode){
-      // file = new FileWriter(UserData);
-      // file.write(email+ "\n" + ||);
+    public void writeOnFile(String category, String email, String name, String surname, String address, String encoded){
+        String path = "/home/beatrice/Scrivania/VICARIO/FlowerShop/usersdata.txt";
+       // try{
+       // Scanner scan = new Scanner(new File(path));
+       //     while (scan.hasNextLine()) {
+       //         String line = scan.nextLine();
+       //         System.out.println(line);
+       //     }
+       // } catch (FileNotFoundException e){
+       //     System.err.println("ERROR");
+       // }
+        try {
+            PrintWriter pw = new PrintWriter(new FileWriter(path, true));
+            pw.append("\n");
+            pw.append(category+ "\n" + email + "\n" + name + "\n" + surname + "\n" + address + "\n" + encoded + "\n");
+            pw.close();
+        } catch (IOException e){
+            System.err.println("ERROR");
+        }
 
 
-       // Scanner scan = new Scanner(new File());//String firstline = scan.nextLine();
     }
 
 

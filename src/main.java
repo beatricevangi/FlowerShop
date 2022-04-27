@@ -7,13 +7,6 @@ public class main {
     public static void main(String[] args) throws IOException {
         Program p = new Program();
         p.run();
-        File f = new File("UsersData.txt");
-        if (f.exists()){
-            System.out.println("weeeeeee");
-        }
-        FileWriter fw = new FileWriter(f);
-        fw.append("eddaeeei \n");
-        fw.append("seconda riga");
 
         //Scanner scan = new Scanner(new File("/home/beatrice/Scrivania/VICARIO/FlowerShop/usersdata.txt"));
         //while (scan.hasNextLine()) {
