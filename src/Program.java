@@ -113,6 +113,8 @@ public class Program {
     }
 
 
+
+
     public boolean checkEmail(String str){
         for(User u : users){
             if(u.getEmail() == str){
