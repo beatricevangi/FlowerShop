@@ -15,16 +15,17 @@ public class main {
         fw.append("eddaeeei \n");
         fw.append("seconda riga");
 
-        String path = "/home/beatrice/Scrivania/VICARIO/FlowerShop/UsersData.txt";
-        Scanner scan = new Scanner(new File("UsersData.txt"));
-        while (scan.hasNextLine()) {
-            String line = scan.nextLine();
-            System.out.println(line);
-        }
+        //Scanner scan = new Scanner(new File("/home/beatrice/Scrivania/VICARIO/FlowerShop/usersdata.txt"));
+        //while (scan.hasNextLine()) {
+        //    String line = scan.nextLine();
+        //    System.out.println(line);
+        //}
+        //String path = "/home/beatrice/Scrivania/VICARIO/FlowerShop/usersdata.txt";
+        //PrintWriter pw = new PrintWriter(new FileWriter(path, true));
+        //pw.append("\n");
+        //pw.close();
 
-        // FileWriter w = new FileWriter("UsersData.txt");
-        //String str = "seconda riga ";
-        //w.write(str + "\n" + str + "\n");
-        fw.close();
+
+
     }
 }

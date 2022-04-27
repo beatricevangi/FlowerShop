@@ -66,6 +66,7 @@ public class Program {
             currentUser = new Florist(email, name, surname, address, encoded, true);
             users.add(currentUser);
         }
+        writeOnFile(category, email, name, surname, address, encoded);
     }
 
     public void writeOnFile(FileWriter file, String email, String name, String surname, String address, String encode){
