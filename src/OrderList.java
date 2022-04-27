@@ -9,6 +9,10 @@ public class OrderList implements Subject {
         return ol;
     }
 
+    public int getSize(){
+        return orders.size();
+    }
+
     public Order getOrder() {
         int count = 0;
         for (Order order : orders) {

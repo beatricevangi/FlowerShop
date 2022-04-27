@@ -2,16 +2,8 @@ import java.util.Scanner;
 
 public class Customer extends User{
     private String address;
-
     private Order o;
 
-    public Customer(String email, String name, String surname, String address, String pass){
-        this.email = email;
-        this.name = name;
-        this.surname = surname;
-        this.address = address;
-        this.encodedpass = pass;
-    }
 
     public Customer(String email, String name, String surname, String address, String pass, boolean logged){
         this.email = email;

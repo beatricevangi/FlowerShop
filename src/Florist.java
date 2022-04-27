@@ -4,12 +4,14 @@ public class Florist extends User {
     private Storage s;
     private ShippingCompany sc;
 
+
     public Florist(String email, String name, String surname, String address, String pass, boolean log){
         this.email = email;
         this.name = name;
         this.surname = surname;
         this.address = address;
         this.encodedpass = pass;
+        this.logged = log;
     }
 
     public void pickOrder() {
