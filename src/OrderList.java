@@ -25,6 +25,8 @@ public class OrderList implements Subject {
         return null;
     }
 
+
+
     public void putOrder(Order o) {
         this.orders.add(o);
         notify(o.getCostumer());

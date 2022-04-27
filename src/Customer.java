@@ -12,6 +12,7 @@ public class Customer extends User{
         this.address = address;
         this.encodedpass = pass;
         this.logged = logged;
+        this.id = Program.getInstance().getNumUsers();
     }
 
     public void createOrder(){

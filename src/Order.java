@@ -8,14 +8,12 @@ public class Order {
     private Customer c;
     private ArrayList<Product> articles;
     private String status;
-    static int idCounter = 0;
 
     Order(Customer c){
         isComplete = false;
         status = "processing";
         subtotal = 0;
-        id = idCounter;
-        idCounter ++;
+        this.id = OrderList.getInstance().getSize() - 1;
     }
 
     public int getId() {
