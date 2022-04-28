@@ -6,24 +6,30 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Program {
-    private OrderList ol = new OrderList();
+    private OrderList ol = OrderList.getInstance();
     public static Program p = new Program();
     private final ArrayList<User> users;
     private User currentUser;
     private Menu menu;
-    private boolean quit;
+    private boolean quit = false;
 
-    public Program(){
+    private Program(){
         currentUser = null;
         users = new ArrayList<User>();
-        menu = null;
+        //menu = new LoginMenu();
 
+        //createCatalog();
+        init();
+
+    }
+
+    public void init(){
         String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/users.csv";
         try {
             BufferedReader csvReader = new BufferedReader(new FileReader(pathToCSV));
             String row = csvReader.readLine();
             while ((row) != null) {
-                String[] data = row.split(", ");
+                String[] data = row.split(";");
                 if (data[0] == "florist") {
                     Florist f = new Florist(data[1], data[2], data[3], data[4], data[5], false);
                     users.add(f);
@@ -32,7 +38,6 @@ public class Program {
                     Customer c = new Customer(data[1], data[2], data[3], data[4], data[5], false);
                     users.add(c);
                 }
-                //System.out.print(Arrays.toString(data) + "\n");
                 row = csvReader.readLine();
             }
             csvReader.close();
@@ -41,12 +46,12 @@ public class Program {
         }
     }
 
-    void setMenu(Menu menu) {
+    public void setMenu(Menu menu) {
         this.menu = menu;
     }
 
     public void createCatalog(){
-        //TODO
+        Catalog c = new Catalog();
     }
 
     public void run(){
@@ -79,14 +84,12 @@ public class Program {
             currentUser = new Customer(email, name, surname, address, encoded, true);
             users.add(currentUser);
         }
-
         if(category == "florist"){
             currentUser = new Florist(email, name, surname, address, encoded, true);
             users.add(currentUser);
         }
-        // writeOnFile(category, email, name, surname, address, encoded);
-        // TO DO
-        //writeOnCSV(category, email, name, surname, address, encoded, cuid);
+        writeUserOnCSV(category, currentUser);
+
 
     }
 

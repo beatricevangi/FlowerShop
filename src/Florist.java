@@ -12,6 +12,7 @@ public class Florist extends User {
         this.address = address;
         this.encodedpass = pass;
         this.logged = log;
+        this.id = Program.getInstance().getNumUsers();
     }
 
     public void pickOrder() {

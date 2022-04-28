@@ -32,7 +32,13 @@ public class Order {
         status = str;
     }
 
-    public Customer getCostumer(){ return c; }
+    public Customer getCustomer(){ return c; }
+
+    public ArrayList<Product> getComponents(){
+        return articles;
+    }
+
+    public String getStatus() { return status; }
 
     public void displayOrderFloristPOV(){
         System.out.println("ID: " + id);

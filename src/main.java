@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) throws IOException {
-        Program p = new Program();
+        Program p = Program.getInstance();
         p.run();
 
         //Scanner scan = new Scanner(new File("/home/beatrice/Scrivania/VICARIO/FlowerShop/usersdata.txt"));
@@ -25,7 +25,7 @@ public class main {
         BufferedReader csvReader = new BufferedReader(new FileReader(pathToCSV));
         String row = csvReader.readLine();
         while((row) != null) {
-            String[] data = row.split(", ");
+            String[] data = row.split(";");
             System.out.print(Arrays.toString(data)+ "\n");
             row = csvReader.readLine();
         }

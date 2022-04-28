@@ -1,5 +1,5 @@
 public class OrderManager {
-    private OrderList ol = new OrderList();
+    private OrderList ol = OrderList.getInstance();
 
 
     public void createOrder(){

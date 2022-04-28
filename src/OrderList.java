@@ -6,6 +6,11 @@ public class OrderList implements Subject {
     private ArrayList<Order> orders = new ArrayList<>();
     public static OrderList ol = new OrderList();
 
+    private OrderList(){
+        init();
+
+    }
+
     public static synchronized OrderList getInstance(){
         return ol;
     }
@@ -15,6 +20,7 @@ public class OrderList implements Subject {
     }
 
     public Order getOrder() {
+        // return first uncompleted order
         int count = 0;
         for (Order order : orders) {
             if (order.isComplete()) {
@@ -28,7 +34,8 @@ public class OrderList implements Subject {
 
     public void putOrder(Order o) {
         this.orders.add(o);
-        notify(o.getCostumer());
+        writeOrderOnCSV(o);
+        notify(o.getCustomer());
     }
 
     public void displayOrders(){
@@ -42,6 +49,25 @@ public class OrderList implements Subject {
         this.orders.remove(o);
     }
 
+    public void init(){
+        String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/order.csv";
+        try {
+            BufferedReader csvReader = new BufferedReader(new FileReader(pathToCSV));
+            String row = csvReader.readLine();
+            while ((row) != null) {
+                String[] data = row.split(";");
+                //Order o = new Order(data[0], data[2], data[3], data[4], data[5], false);
+                //users.add(f);
+
+                row = csvReader.readLine();
+            }
+            csvReader.close();
+        } catch (IOException e) {
+            System.err.println("Error");
+        }
+    }
+
+
     @Override
     public void notify(Object obj) {
         for (Observer o : observers) {
@@ -51,7 +77,7 @@ public class OrderList implements Subject {
 
     public void printCustomerOrders(Customer c) {
         for (Order o : orders) {
-            if (o.getCostumer() == c) {
+            if (o.getCustomer() == c) {
                 o.displayOrderCustomerPOV();
             }
         }
