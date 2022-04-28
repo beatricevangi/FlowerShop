@@ -24,10 +24,6 @@ public class Order {
         return subtotal;
     }
 
-    public String checkStatus(){
-        return status;
-    }
-
     public void setStatus(String str){
         status = str;
     }

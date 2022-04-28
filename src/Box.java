@@ -24,6 +24,7 @@ public class Box {
 
     public void setOrderStatus(String s){
         o.setStatus(s);
+        OrderList.getInstance().refreshCSV(o);
     }
 
 }

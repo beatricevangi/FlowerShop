@@ -26,23 +26,23 @@ public class Program {
     public void init(){
         String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/users.csv";
         try {
-            BufferedReader csvReader = new BufferedReader(new FileReader(pathToCSV));
-            String row = csvReader.readLine();
-            while ((row) != null) {
-                String[] data = row.split(";");
-                if (data[0] == "florist") {
-                    Florist f = new Florist(data[1], data[2], data[3], data[4], data[5], false);
-                    users.add(f);
+            CSVReader reader = new CSVReader(new FileReader(pathToCSV));
+            List<String[]> csvBody = reader.readAll();
+            for(int i = 0; i < csvBody.size(); i++){
+                for(int j = 0; j < csvBody.get(i).length; j++) {
+                    if (csvBody.get(i)[0] == "florist") {
+                        Florist f = new Florist(csvBody.get(i)[1], csvBody.get(i)[2], csvBody.get(i)[3], csvBody.get(i)[4], csvBody.get(i)[5], false);
+                        users.add(f);
+                    }
+                    if (csvBody.get(i)[0] == "customer") {
+                        Customer c = new Customer(csvBody.get(i)[1], csvBody.get(i)[2], csvBody.get(i)[3], csvBody.get(i)[4], csvBody.get(i)[5], false);
+                        users.add(c);
+                    }
                 }
-                if (data[0] == "customer") {
-                    Customer c = new Customer(data[1], data[2], data[3], data[4], data[5], false);
-                    users.add(c);
-                }
-                row = csvReader.readLine();
             }
-            csvReader.close();
-        } catch (IOException e) {
-            System.err.println("Error");
+            reader.close();
+        }catch (Exception e) {
+            System.err.println("Error: init on Program while reading csv");
         }
     }
 
@@ -160,6 +160,16 @@ public class Program {
                 return u;
             }
         }
+        return null;
+    }
+
+    public Customer getCustomerFromId(int id){
+        for(User u : users){
+            if (u.getId() == id && u instanceof Customer) {
+                return ((Customer) u);
+            }
+        }
+        System.out.println("ID non-existent or non-belonging to a Customer.");
         return null;
     }
 

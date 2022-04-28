@@ -8,7 +8,6 @@ public class OrderList implements Subject {
 
     private OrderList(){
         init();
-
     }
 
     public static synchronized OrderList getInstance(){
@@ -52,18 +51,21 @@ public class OrderList implements Subject {
     public void init(){
         String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/order.csv";
         try {
-            BufferedReader csvReader = new BufferedReader(new FileReader(pathToCSV));
-            String row = csvReader.readLine();
-            while ((row) != null) {
-                String[] data = row.split(";");
-                //Order o = new Order(data[0], data[2], data[3], data[4], data[5], false);
-                //users.add(f);
-
-                row = csvReader.readLine();
+            CSVReader reader = new CSVReader(new FileReader(pathToCSV));
+            List<String[]> csvBody = reader.readAll();
+            for (int i = 0; i < csvBody.size(); i++) {
+                Customer c = Program.getInstance().getCustomerFromId(Integer.parseInt(csvBody.get(i)[2]));
+                Order o = new Order(c);
+                o.setComplete(Boolean.parseBoolean(csvBody.get(i)[0]));
+                o.setStatus(csvBody.get(i)[3]);
+                for (int j = 5; j < csvBody.get(i).length; j++) {
+                    Product a = Catalog.getInstance().cloneCatalogItem(csvBody.get(i)[j], true);
+                    o.addProduct(a);
+                }
             }
-            csvReader.close();
-        } catch (IOException e) {
-            System.err.println("Error");
+            reader.close();
+        } catch (Exception e) {
+            System.err.println("Error: init on Program while reading csv");
         }
     }
 
@@ -83,21 +85,59 @@ public class OrderList implements Subject {
         }
     }
 
-    public void writeOrderOnCSV(Order order){
+    public void writeOrderOnCSV(Order order) {
         String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/orders.csv";
-        PrintWriter pw = null;
-        try {
-            pw = new PrintWriter(new FileWriter(pathToCSV, true));
-        } catch (IOException e) {
-            System.err.println("Error");
+        try{
+            CSVReader reader = new CSVReader(new FileReader(pathToCSV));
+            List<String[]> csvBody = reader.readAll();
+
+            int n = order.getComponents().size();
+            String[] neworder = new String[n + 5];
+            neworder[0] = String.valueOf(order.isComplete());
+            neworder[1] = String.valueOf(order.getId());
+            neworder[2] = String.valueOf(order.getCustomer().getId());
+            neworder[3] = String.valueOf(order.getStatus());
+            neworder[4] = String.valueOf(order.getSubtotal());
+            int i = 0;
+            for(Product a : order.getComponents()){
+                neworder[5 + i] = a.getName();
+                i ++;
+            }
+            csvBody.add(neworder);
+            reader.close();
+
+            CSVWriter writer = new CSVWriter(new FileWriter(pathToCSV));
+            writer.writeAll(csvBody);
+            writer.flush();
+            writer.close();
+
+
+        } catch(Exception e){
+            System.err.println("Error: Csv Exception");
         }
-        StringBuilder builder = new StringBuilder();
-        builder.append("\n");
-        builder.append(order.getId() + ";" + order.getCustomer().getId() + ";" + order.getStatus() + ";" + order.getSubtotal() + ";");
-        for(Product a : order.getComponents())
-            builder.append(a);
-        pw.write(builder.toString());
-        pw.close();
+
+    }
+
+    public void refreshCSV(Order o) {
+        String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/order.csv";
+        File inputFile = new File(pathToCSV);
+        try {
+            CSVReader reader = new CSVReader(new FileReader(pathToCSV));
+            List<String[]> csvBody = reader.readAll();
+            for (int i = 0; i < csvBody.size(); i++) {
+                int a = o.getId();
+                if (csvBody.get(i)[1] == Integer.toString(a)) {
+                    csvBody.get(i)[3] = o.getStatus();
+                }
+            }
+            reader.close();
+            CSVWriter writer = new CSVWriter(new FileWriter(inputFile));
+            writer.writeAll(csvBody);
+            writer.flush();
+            writer.close();
+        } catch (Exception e) {
+            System.err.println("ERROR: csv exception");
+        }
     }
 
     @Override

@@ -24,16 +24,12 @@ public class main {
         String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/users.csv";
         BufferedReader csvReader = new BufferedReader(new FileReader(pathToCSV));
         String row = csvReader.readLine();
-        while((row) != null) {
+        while ((row) != null) {
             String[] data = row.split(";");
-            System.out.print(Arrays.toString(data)+ "\n");
+            System.out.print(Arrays.toString(data) + "\n");
             row = csvReader.readLine();
         }
         csvReader.close();
-
-
-
-
 
 
 

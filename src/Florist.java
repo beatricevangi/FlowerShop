@@ -48,6 +48,7 @@ public class Florist extends User {
             box.close();
             currentorder.setComplete(true);
             currentorder.setStatus("Ready");
+            OrderList.getInstance().refreshCSV(currentorder);
             System.out.println("L'ordine " + currentorder.getId() + " è stato completato.");
             sendOrder(box);
         } else {
