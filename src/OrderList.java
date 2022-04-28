@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 
 public class OrderList implements Subject {
@@ -24,8 +25,6 @@ public class OrderList implements Subject {
         }
         return null;
     }
-
-
 
     public void putOrder(Order o) {
         this.orders.add(o);
@@ -56,6 +55,23 @@ public class OrderList implements Subject {
                 o.displayOrderCustomerPOV();
             }
         }
+    }
+
+    public void writeOrderOnCSV(Order order){
+        String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/orders.csv";
+        PrintWriter pw = null;
+        try {
+            pw = new PrintWriter(new FileWriter(pathToCSV, true));
+        } catch (IOException e) {
+            System.err.println("Error");
+        }
+        StringBuilder builder = new StringBuilder();
+        builder.append("\n");
+        builder.append(order.getId() + ";" + order.getCustomer().getId() + ";" + order.getStatus() + ";" + order.getSubtotal() + ";");
+        for(Product a : order.getComponents())
+            builder.append(a);
+        pw.write(builder.toString());
+        pw.close();
     }
 
     @Override

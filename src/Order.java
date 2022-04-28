@@ -69,7 +69,4 @@ public class Order {
         subtotal += p.getPrice();
     }
 
-    ArrayList<Product> getComponents(){
-        return articles;
-    }
 }

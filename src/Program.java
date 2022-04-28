@@ -78,7 +78,6 @@ public class Program {
         if (category == "customer"){
             currentUser = new Customer(email, name, surname, address, encoded, true);
             users.add(currentUser);
-
         }
 
         if(category == "florist"){
@@ -91,25 +90,44 @@ public class Program {
 
     }
 
+/*
     public void writeOnFile(String category, String email, String name, String surname, String address, String encoded){
-        String path = "/home/beatrice/Scrivania/VICARIO/FlowerShop/usersdata.txt";
-       // try{
-       // Scanner scan = new Scanner(new File(path));
-       //     while (scan.hasNextLine()) {
-       //         String line = scan.nextLine();
-       //         System.out.println(line);
-       //     }
-       // } catch (FileNotFoundException e){
-       //     System.err.println("ERROR");
-       // }
-        try {
-            PrintWriter pw = new PrintWriter(new FileWriter(path, true));
-            pw.append("\n");
-            pw.append(category+ "\n" + email + "\n" + name + "\n" + surname + "\n" + address + "\n" + encoded + "\n");
+     String path = "/home/beatrice/Scrivania/VICARIO/FlowerShop/usersdata.txt";
+     try{
+     Scanner scan = new Scanner(new File(path));
+         while (scan.hasNextLine()) {
+             String line = scan.nextLine();
+             System.out.println(line);
+         }
+     } catch (FileNotFoundException e){
+         System.err.println("ERROR");
+     }
+     try {
+         PrintWriter pw = new PrintWriter(path);
+         pw.append("\n");
+         pw.append(category+ "\n" + email + "\n" + name + "\n" + surname + "\n" + address + "\n" + encoded + "\n");
             pw.close();
         } catch (IOException e){
             System.err.println("ERROR");
         }
+    }
+*/
+
+
+    public void writeUserOnCSV(String category, User currentUser){
+        String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/users.csv";
+        PrintWriter pw = null;
+        try {
+            pw = new PrintWriter(new FileWriter(pathToCSV, true));
+        } catch (IOException e) {
+            System.err.println("Error");
+        }
+        StringBuilder builder = new StringBuilder();
+        builder.append("\n");
+        builder.append(category + ";" + currentUser.getEmail() + ";" + currentUser.getName() + ";" + currentUser.getSurname()
+                + ";" + currentUser.getAddress() + ";" + currentUser.getHashPass() + ";" + currentUser.getId());
+        pw.write(builder.toString());
+        pw.close();
     }
 
 

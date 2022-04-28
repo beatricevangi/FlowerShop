@@ -3,6 +3,7 @@ public abstract class User {
     protected String surname;
     protected String email;
     protected String encodedpass;
+
     protected String address;
     protected int id;
 
@@ -32,6 +33,10 @@ public abstract class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getAddress() { return address; }
+
+    public void setAddress(String address){ this.address = address; }
 
     public String getHashPass() {
         return encodedpass;

@@ -45,7 +45,6 @@ public class Catalog {
             if (scan != null)
                 scan.close();
         }
-
     }
 
     public void addBouquetToCatalog(String s) throws FileNotFoundException {
