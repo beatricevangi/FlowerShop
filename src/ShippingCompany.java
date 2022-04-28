@@ -1,5 +1,4 @@
 public class ShippingCompany {
-    private String name;
 
     public void ship(Box b){
         try {

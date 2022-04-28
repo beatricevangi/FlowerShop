@@ -4,7 +4,6 @@ public class MenuFlorist implements Menu{
 
     @Override
     public void show() {
-        // todo
         int menuItem;
         boolean logout = false;
         Florist currentFlorist = null;
@@ -18,8 +17,7 @@ public class MenuFlorist implements Menu{
         }
 
         do{
-            System.out.println("ready to sgobb, " + currentFlorist.getName() + "? " +
-                    "FLORIST SHOPPE is yours bro, ur the gvng,  don't change, loyal to tha stryt");
+            System.out.println("Welcome " +  currentFlorist.getName() + "!");
             System.out.println("1: fill order");
             System.out.println("2: view order list");
             System.out.println("0: logout");

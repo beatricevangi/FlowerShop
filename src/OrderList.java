@@ -39,7 +39,7 @@ public class OrderList implements Subject {
     public void putOrder(Order o) {
         this.orders.add(o);
         writeOrderOnCSV(o);
-        notify(o.getCustomer());
+        notify(o);
     }
 
     public void displayOrders() {

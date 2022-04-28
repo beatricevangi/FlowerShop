@@ -7,43 +7,39 @@ import java.util.List;
 import java.util.Objects;
 
 public class Program {
-    private OrderList ol = OrderList.getInstance();
     public static Program p = new Program();
     private final ArrayList<User> users;
     private User currentUser;
     private Menu menu;
     private boolean quit = false;
 
-    private Program(){
+    private Program() {
         currentUser = null;
-        users = new ArrayList<User>();
-        //menu = new LoginMenu();
-
-        //createCatalog();
+        users = new ArrayList<>();
+        menu = new LoginMenu();
         initUsers();
-
+        createCatalog();
 
     }
 
-    public void initUsers(){
+    public void initUsers() {
         String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/users.csv";
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
-            for(int i = 0; i < csvBody.size(); i++){
-                for(int j = 0; j < csvBody.get(i).length; j++) {
-                    if (csvBody.get(i)[0] == "florist") {
-                        Florist f = new Florist(csvBody.get(i)[1], csvBody.get(i)[2], csvBody.get(i)[3], csvBody.get(i)[4], csvBody.get(i)[5], false);
-                        users.add(f);
-                    }
-                    if (csvBody.get(i)[0] == "customer") {
-                        Customer c = new Customer(csvBody.get(i)[1], csvBody.get(i)[2], csvBody.get(i)[3], csvBody.get(i)[4], csvBody.get(i)[5], false);
-                        users.add(c);
-                    }
+            for (String[] strings : csvBody) {
+                if (strings[0].equals("florist")) {
+                    Florist f = new Florist(strings[1], strings[2], strings[3], strings[4], strings[5], false);
+                    users.add(f);
+                }
+                if (strings[0].equals("customer")) {
+                    Customer c = new Customer(strings[1], strings[2], strings[3], strings[4], strings[5], false);
+                    users.add(c);
                 }
             }
+
             reader.close();
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("Error: init on Program while reading csv");
         }
     }
@@ -52,28 +48,26 @@ public class Program {
         this.menu = menu;
     }
 
-    public void createCatalog(){
-        Catalog c = new Catalog();
+    public void createCatalog() {
+        Catalog.getInstance();
     }
 
-    public void run(){
+    public void run() {
         //todo sistema quit
 
-       //while(!quit){
-       //    menu.show();
-       //}
+        while (!quit) {
+            menu.show();
+        }
     }
 
-
-    public void login(String email, String encoded){
-        for(User u : users){
-            if(u.getEmail() == email){
-                if(u.getHashPass() == encoded){
+    public void login(String email, String encoded) {
+        for (User u : users) {
+            if (u.getEmail().equals(email)) {
+                if (Objects.equals(u.getHashPass(), encoded)) {
                     System.out.println("Successfully logged in");
                     u.setLogged(true);
                     currentUser = getUser(email);
-                }
-                else{
+                } else {
                     System.out.println("Wrong password!");
                     currentUser = null;
                 }
@@ -81,18 +75,16 @@ public class Program {
         }
     }
 
-    public void signIn(String category, String email, String name, String surname, String address, String encoded){
-        if (category == "customer"){
+    public void signIn(String category, String email, String name, String surname, String address, String encoded) {
+        if (category.equals("customer")) {
             currentUser = new Customer(email, name, surname, address, encoded, true);
             users.add(currentUser);
         }
-        if(category == "florist"){
+        if (category.equals("florist")) {
             currentUser = new Florist(email, name, surname, address, encoded, true);
             users.add(currentUser);
         }
         writeUserOnCSV(category, currentUser);
-
-
     }
 
 /*
@@ -118,14 +110,13 @@ public class Program {
     }
 */
 
-
-    public void writeUserOnCSV(String category, User currentUser){
+    public void writeUserOnCSV(String category, User currentUser) {
         String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/users.csv";
-        try{
+        try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
             String[] newuser = {category, currentUser.getEmail(), currentUser.getName(), currentUser.getSurname(),
-                    currentUser.getAddress(),  currentUser.getHashPass(), String.valueOf(currentUser.getId())};
+                    currentUser.getAddress(), currentUser.getHashPass(), String.valueOf(currentUser.getId())};
             csvBody.add(newuser);
             reader.close();
 
@@ -133,40 +124,39 @@ public class Program {
             writer.writeAll(csvBody);
             writer.flush();
             writer.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             System.err.println("Error: Csv Exception");
         }
     }
 
-    public boolean checkEmail(String str){
-        for(User u : users){
-            if(u.getEmail() == str){
+    public boolean checkEmail(String str) {
+        for (User u : users) {
+            if (u.getEmail().equals(str)) {
                 return true;
             }
         }
         return false;
     }
 
-    public static synchronized Program getInstance(){
+    public static synchronized Program getInstance() {
         return p;
     }
-
 
     public User getCurrentUser() {
         return currentUser;
     }
 
-    public User getUser(String email){
-        for(User u : users){
-            if(u.getEmail() == email){
+    public User getUser(String email) {
+        for (User u : users) {
+            if (Objects.equals(u.getEmail(), email)) {
                 return u;
             }
         }
         return null;
     }
 
-    public Customer getCustomerFromId(int id){
-        for(User u : users){
+    public Customer getCustomerFromId(int id) {
+        for (User u : users) {
             if (u.getId() == id && u instanceof Customer) {
                 return ((Customer) u);
             }
@@ -175,7 +165,7 @@ public class Program {
         return null;
     }
 
-    public int getNumUsers(){
+    public int getNumUsers() {
         return users.size();
     }
 

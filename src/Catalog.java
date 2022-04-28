@@ -3,12 +3,12 @@ import java.io.*;
 import java.util.*;
 
 public class Catalog {
-    private ArrayList<Product> floristcat = new ArrayList<Product>();
-    private ArrayList<Product> suppliercat = new ArrayList<Product>();
+    private final ArrayList<Product> floristcat = new ArrayList<>();
+    private final ArrayList<Product> suppliercat = new ArrayList<>();
     public static Catalog cat = new Catalog();
 
 
-    Catalog() {
+    private Catalog() {
         Scanner scan = null;
         try {
             String fileFlower = "flower.txt";
@@ -99,6 +99,7 @@ public class Catalog {
             if (Objects.equals(p.getName(), s)) {
                 if (p instanceof Flower) {
                     copy = ((Flower) p).clone();
+
                 } else {
                     if (p instanceof Decoration) {
                         copy = ((Decoration) p).clone();

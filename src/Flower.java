@@ -1,5 +1,5 @@
 public class Flower extends Product {
-    private String name;
+    private final String name;
 
     Flower(String name, float price) {
         this.price = price;
@@ -8,7 +8,6 @@ public class Flower extends Product {
 
     @Override
     protected Flower clone() {
-        Flower copy = new Flower(new String(this.name), new Float(this.price));
-        return copy;
+        return new Flower(this.name, new Float(this.price));
     }
 }

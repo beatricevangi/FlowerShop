@@ -72,6 +72,8 @@ public class LoginMenu implements Menu {
             }
         }
         while(!quit);
+
+        Program.getInstance().setQuit(true);
     }
 
     public void submit() {
