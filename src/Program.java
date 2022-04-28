@@ -2,10 +2,9 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
 import java.io.*;
-import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Program {
     private OrderList ol = OrderList.getInstance();
@@ -178,5 +177,9 @@ public class Program {
 
     public int getNumUsers(){
         return users.size();
+    }
+
+    public void setQuit(boolean quit) {
+        this.quit = quit;
     }
 }

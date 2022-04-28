@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Box {
-    private Order o;
+    private final Order o;
     private ArrayList<Product> products = new ArrayList<Product>();
     private boolean isClosed;
 

@@ -69,8 +69,4 @@ public class Order {
         articles.add(p);
         subtotal += p.getPrice();
     }
-
-
-
-
 }

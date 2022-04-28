@@ -36,7 +36,7 @@ public class Florist extends User {
                 if (i instanceof Flower || i instanceof Decoration) {
                     box.pack(s.getItem(i.getName()));
                 } else {
-                    Bouquet b = new Bouquet(new String(i.getName()));
+                    Bouquet b = new Bouquet(i.getName());
                     // in questo caso abbiamo un Bouquet
                     for (int itr = 0; itr < ((Bouquet) i).getSize(); itr++) {
                         Product tmp = ((Bouquet) i).getItem(itr);

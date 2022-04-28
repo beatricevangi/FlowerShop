@@ -58,13 +58,13 @@ public class OrderList implements Subject {
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
-            for (int i = 0; i < csvBody.size(); i++) {
-                Customer c = Program.getInstance().getCustomerFromId(Integer.parseInt(csvBody.get(i)[2]));
+            for (String[] strings : csvBody) {
+                Customer c = Program.getInstance().getCustomerFromId(Integer.parseInt(strings[2]));
                 Order o = new Order(c);
-                o.setComplete(Boolean.parseBoolean(csvBody.get(i)[0]));
-                o.setStatus(csvBody.get(i)[3]);
-                for (int j = 5; j < csvBody.get(i).length; j++) {
-                    Product a = Catalog.getInstance().cloneCatalogItem(csvBody.get(i)[j], true);
+                o.setComplete(Boolean.parseBoolean(strings[0]));
+                o.setStatus(strings[3]);
+                for (int j = 5; j < strings.length; j++) {
+                    Product a = Catalog.getInstance().cloneCatalogItem(strings[j], true);
                     o.addProduct(a);
                 }
             }
@@ -129,10 +129,10 @@ public class OrderList implements Subject {
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
-            for (int i = 0; i < csvBody.size(); i++) {
+            for (String[] strings : csvBody) {
                 int a = o.getId();
-                if (csvBody.get(i)[1] == Integer.toString(a)) {
-                    csvBody.get(i)[3] = o.getStatus();
+                if (strings[1].equals(Integer.toString(a))) {
+                    strings[3] = o.getStatus();
                 }
             }
             reader.close();

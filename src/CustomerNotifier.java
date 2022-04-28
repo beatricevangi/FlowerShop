@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class CustomerNotifier implements Observer {
-    private OrderList ol;
 
     @Override
     public void update(Object name) {
@@ -11,13 +10,18 @@ public class CustomerNotifier implements Observer {
             //sendMail(str = " ", c);
         }
         else {
-            //TODO altra mail du cazz
-            //sendMail(str, c);
+            System.out.println("Order not received.");
         }
     }
 
-    public void sendMail(String str, Customer c){
-        // todo COME CAZZO ARRIVO ALL'emaila del CUSTOMER
+    public void sendMail(Customer c, boolean isComplete){
+        if (isComplete){
+            //todo
+        }
+        else{
+            //todo
+        }
     }
 }
-//https://www.lim.di.unimi.it/teaching/materiali/progmus/07_strutture_dinamiche.pdf?PHPSESSID=n706v97jqm6vbssviv7jjvvi97
+
+

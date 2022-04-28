@@ -1,4 +1,3 @@
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -130,7 +129,6 @@ public class LoginMenu implements Menu {
         for (byte bytes : messageDigestSHA256) {
             stringBuffer.append(String.format("%02x", bytes & 0xff));
         }
-        String encoded = stringBuffer.toString();
-        return encoded;
+        return stringBuffer.toString();
     }
 }

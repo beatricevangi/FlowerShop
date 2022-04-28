@@ -41,7 +41,7 @@ public class Storage implements Subject{
     public Product getItem(String name){
         //chiamato da fioraio per prendere imgridietnz
         for (Product i : storage){
-            if(i.getName() == name){
+            if(i.getName().equals(name)){
                 storage.remove(i);
                 refresh(i.getName(), "remove");
                 return i;
@@ -53,14 +53,14 @@ public class Storage implements Subject{
 
     public void refresh(String name, String flag){
         // metodo che aggiorna la lista che tiene conto delle quantità
-        for(int i = 0; i < quantity.size(); i++ ){
-            if (name == quantity.get(i).first){
-                if(flag == "add")
-                    quantity.get(i).second++;
-                if(flag == "remove")
-                    quantity.get(i).second--;
-                if (quantity.get(i).second < minimum){
-                    notify(quantity.get(i).first);
+        for (Pair<String, Integer> stringIntegerPair : quantity) {
+            if (name.equals(stringIntegerPair.first)) {
+                if (flag.equals("add"))
+                    stringIntegerPair.second++;
+                if (flag.equals("remove"))
+                    stringIntegerPair.second--;
+                if (stringIntegerPair.second < minimum) {
+                    notify(stringIntegerPair.first);
                 }
             }
         }
