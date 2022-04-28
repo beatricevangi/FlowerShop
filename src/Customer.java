@@ -35,12 +35,12 @@ public class Customer extends User{
         }
     }
 
-    public int chooseProduct() {
+    public Product chooseProduct() {
         Catalog c = Catalog.getInstance();
         c.displayFloristCatalog();
         System.out.println("Select the number of the product to add to your order");
         Scanner input = new Scanner(System.in);
-        return input.nextInt();
+        return Catalog.getInstance().getFloristProduct(input.nextInt());
     }
 
     public void myOrders(){

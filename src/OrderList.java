@@ -1,20 +1,25 @@
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
+import java.lang.String;
 
 public class OrderList implements Subject {
     private ArrayList<Observer> observers = new ArrayList<>();
     private ArrayList<Order> orders = new ArrayList<>();
     public static OrderList ol = new OrderList();
 
-    private OrderList(){
+    private OrderList() {
         init();
     }
 
-    public static synchronized OrderList getInstance(){
+    public static synchronized OrderList getInstance() {
         return ol;
     }
 
-    public int getSize(){
+    public int getSize() {
         return orders.size();
     }
 
@@ -37,9 +42,9 @@ public class OrderList implements Subject {
         notify(o.getCustomer());
     }
 
-    public void displayOrders(){
+    public void displayOrders() {
         System.out.println("Completati:");
-        for(Order o : orders){
+        for (Order o : orders) {
             o.displayOrderFloristPOV();
         }
     }
@@ -48,7 +53,7 @@ public class OrderList implements Subject {
         this.orders.remove(o);
     }
 
-    public void init(){
+    public void init() {
         String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/order.csv";
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));

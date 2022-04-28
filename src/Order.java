@@ -65,10 +65,12 @@ public class Order {
         isComplete = c;
     }
 
-    void addProduct(int num){
-        Product p = Catalog.getInstance().getFloristProduct(num);
+    void addProduct(Product p){
         articles.add(p);
         subtotal += p.getPrice();
     }
+
+
+
 
 }

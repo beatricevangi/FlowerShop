@@ -1,9 +1,11 @@
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+
 import java.io.*;
 import java.io.IOException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.List;
 
 public class Program {
     private OrderList ol = OrderList.getInstance();
@@ -19,11 +21,12 @@ public class Program {
         //menu = new LoginMenu();
 
         //createCatalog();
-        init();
+        initUsers();
+
 
     }
 
-    public void init(){
+    public void initUsers(){
         String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/users.csv";
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
@@ -119,22 +122,22 @@ public class Program {
 
     public void writeUserOnCSV(String category, User currentUser){
         String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/users.csv";
-        PrintWriter pw = null;
-        try {
-            pw = new PrintWriter(new FileWriter(pathToCSV, true));
-        } catch (IOException e) {
-            System.err.println("Error");
+        try{
+            CSVReader reader = new CSVReader(new FileReader(pathToCSV));
+            List<String[]> csvBody = reader.readAll();
+            String[] newuser = {category, currentUser.getEmail(), currentUser.getName(), currentUser.getSurname(),
+                    currentUser.getAddress(),  currentUser.getHashPass(), String.valueOf(currentUser.getId())};
+            csvBody.add(newuser);
+            reader.close();
+
+            CSVWriter writer = new CSVWriter(new FileWriter(pathToCSV));
+            writer.writeAll(csvBody);
+            writer.flush();
+            writer.close();
+        } catch(Exception e){
+            System.err.println("Error: Csv Exception");
         }
-        StringBuilder builder = new StringBuilder();
-        builder.append("\n");
-        builder.append(category + ";" + currentUser.getEmail() + ";" + currentUser.getName() + ";" + currentUser.getSurname()
-                + ";" + currentUser.getAddress() + ";" + currentUser.getHashPass() + ";" + currentUser.getId());
-        pw.write(builder.toString());
-        pw.close();
     }
-
-
-
 
     public boolean checkEmail(String str){
         for(User u : users){
