@@ -1,6 +1,0 @@
-ribbon_bow
-1.50
-paper_wrap
-2
-tulle
-2.50

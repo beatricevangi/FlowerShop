@@ -8,6 +8,6 @@ public class Flower extends Product {
 
     @Override
     protected Flower clone() {
-        return new Flower(this.name, new Float(this.price));
+        return new Flower(this.name, this.price);
     }
 }

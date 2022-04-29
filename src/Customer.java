@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
 public class Customer extends User{
-    private final String address;
-
 
     public Customer(String email, String name, String surname, String address, String pass, boolean logged){
         this.email = email;

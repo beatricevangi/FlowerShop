@@ -43,6 +43,7 @@ public class LoginMenu implements Menu {
                     break;
 
                 case 1:
+                    System.out.println("LOGIN MENU");
                     System.out.println("Insert Email:");
                     String name = inLog.nextLine();
                     if (!Program.getInstance().checkEmail(name)) {
@@ -78,6 +79,7 @@ public class LoginMenu implements Menu {
 
     public void submit() {
         Scanner inLog = new Scanner(System.in);
+        System.out.println("REGISTRATION FORM");
         System.out.println("Are you a florist or a customer? ");
         String a = inLog.nextLine();
         String email = null;
@@ -96,7 +98,9 @@ public class LoginMenu implements Menu {
                 name = inLog.nextLine();
                 System.out.println("Insert Surname: ");
                 surname = inLog.nextLine();
-                System.out.println("Insert Password: ");
+                System.out.println("Insert Address (optional): ");
+                address = inLog.nextLine();
+                System.out.println("Create a Password: ");
                 pass = inLog.nextLine();
                 encoded = encode(pass);
                 break;
@@ -111,7 +115,7 @@ public class LoginMenu implements Menu {
                 surname = inLog.nextLine();
                 System.out.println("Insert Address: ");
                 address = inLog.nextLine();
-                System.out.println("Insert Password: ");
+                System.out.println("Create a Password: ");
                 pass = inLog.nextLine();
                 encoded = encode(pass);
                 break;
