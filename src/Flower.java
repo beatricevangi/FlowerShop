@@ -1,5 +1,4 @@
 public class Flower extends Product {
-    private final String name;
 
     Flower(String name, float price) {
         this.price = price;

@@ -40,7 +40,9 @@ public class LoginMenu implements Menu {
 
                 case 0:
                     quit = true;
+                    Program.getInstance().setQuit(true);
                     break;
+
 
                 case 1:
                     System.out.println("LOGIN MENU");
@@ -54,27 +56,33 @@ public class LoginMenu implements Menu {
                         String pass = inLog.nextLine();
                         Program.getInstance().login(name, encode(pass));
                     }
+                    if (Program.getInstance().getCurrentUser() instanceof Florist) {
+                        Program.getInstance().setMenu(new MenuFlorist());
+                    }
+                    if (Program.getInstance().getCurrentUser() instanceof Customer) {
+                        Program.getInstance().setMenu(new MenuCustomer());
+                    }
                     quit = true;
                     break;
+
 
                 case 2:
                     while (Program.getInstance().getCurrentUser() == null) {
                         submit();
                     }
+                    if (Program.getInstance().getCurrentUser() instanceof Florist) {
+                        Program.getInstance().setMenu(new MenuFlorist());
+                    }
+                    if (Program.getInstance().getCurrentUser() instanceof Customer) {
+                        Program.getInstance().setMenu(new MenuCustomer());
+                    }
                     quit = true;
                     break;
-            }
 
-            if (Program.getInstance().getCurrentUser() instanceof Florist) {
-                Program.getInstance().setMenu(new MenuFlorist());
-            }
-            if (Program.getInstance().getCurrentUser() instanceof Customer) {
-                Program.getInstance().setMenu(new MenuCustomer());
             }
         }
         while(!quit);
 
-        Program.getInstance().setQuit(true);
     }
 
     public void submit() {

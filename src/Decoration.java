@@ -1,5 +1,4 @@
 public class Decoration extends Product{
-    private String name;
 
     Decoration(String name, float price){
         this.price = price;

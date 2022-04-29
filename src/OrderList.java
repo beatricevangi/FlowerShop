@@ -70,7 +70,7 @@ public class OrderList implements Subject {
             }
             reader.close();
         } catch (Exception e) {
-            System.err.println("Error: init on Program while reading csv");
+            System.err.println("Error: init on OrderList while reading csv");
         }
     }
 

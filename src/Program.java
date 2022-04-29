@@ -17,8 +17,6 @@ public class Program {
         currentUser = null;
         users = new ArrayList<>();
         menu = new LoginMenu();
-        initUsers();
-        createCatalog();
 
     }
 
@@ -29,11 +27,11 @@ public class Program {
             List<String[]> csvBody = reader.readAll();
             for (String[] strings : csvBody) {
                 if (strings[0].equals("florist")) {
-                    Florist f = new Florist(strings[1], strings[2], strings[3], strings[4], strings[5], false);
+                    Florist f = new Florist(strings[1], strings[2], strings[3], strings[4], strings[5], false );
                     users.add(f);
                 }
                 if (strings[0].equals("customer")) {
-                    Customer c = new Customer(strings[1], strings[2], strings[3], strings[4], strings[5], false);
+                    Customer c = new Customer(strings[1], strings[2], strings[3], strings[4], strings[5], false );
                     users.add(c);
                 }
             }
@@ -54,6 +52,8 @@ public class Program {
 
     public void run() {
         //todo sistema quit
+        initUsers();
+        createCatalog();
 
         while (!quit) {
             menu.show();

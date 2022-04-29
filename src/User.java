@@ -3,7 +3,6 @@ public abstract class User {
     protected String surname;
     protected String email;
     protected String encodedpass;
-
     protected String address;
     protected int id;
 
