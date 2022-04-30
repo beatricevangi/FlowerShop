@@ -39,6 +39,8 @@ public class MenuCustomer implements Menu{
                 case 3:
                     currentCustomer.setLogged(false);
                     logout = true;
+                    Program.getInstance().setMenu(new LoginMenu());
+                    System.out.println("Logged out successfully. Bye bye!");
                     break;
 
                 default:

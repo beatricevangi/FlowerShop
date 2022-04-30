@@ -100,6 +100,11 @@ public class Catalog {
                     if (p instanceof Decoration) {
                         copy = ((Decoration) p).clone();
                     }
+                    else{
+                        if(p instanceof Bouquet){
+                            copy = ((Bouquet) p).clone();
+                        }
+                    }
                 }
             }
         }

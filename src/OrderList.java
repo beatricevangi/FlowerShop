@@ -14,7 +14,8 @@ public class OrderList implements Subject {
     // Orderlist viene inizializzata nel metodo init(), che viene chiamato(dopo aver chiamato prima getInstance() che
     // costruisce un orderlist VUOTA) nel run() di program.
     private OrderList() {
-        init();
+        observers = new ArrayList<>();
+        orders = new ArrayList<>();
     }
 
     public static synchronized OrderList getInstance() {
@@ -56,7 +57,10 @@ public class OrderList implements Subject {
     }
 
     public void init() {
-        String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/order.csv";
+        String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/orders.csv";
+        List<String[]> csvBody = null;
+        CSVReader reader = null;
+        Order o = null;
         try {
             reader = new CSVReader(new FileReader(pathToCSV));
             csvBody = reader.readAll();
@@ -81,6 +85,7 @@ public class OrderList implements Subject {
             System.err.println("Error: init on OrderList while reading csv");
         }
     }
+
 
     @Override
     public void notify(Object obj) {

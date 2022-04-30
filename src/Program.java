@@ -12,6 +12,7 @@ public class Program {
     private User currentUser;
     private Menu menu;
     private boolean quit = false;
+    public OrderList ol;
 
     private Program() {
         currentUser = null;
@@ -21,7 +22,7 @@ public class Program {
     }
 
     public void initUsers() {
-        String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/users.csv";
+        String pathToCSV = "users.csv";
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
@@ -51,9 +52,10 @@ public class Program {
     }
 
     public void run() {
-        //todo sistema quit
         initUsers();
         createCatalog();
+        OrderList.getInstance().init();
+        ol = OrderList.getInstance();
 
         while (!quit) {
             menu.show();
@@ -89,7 +91,7 @@ public class Program {
 
 
     public void writeUserOnCSV(String category, User currentUser) {
-        String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/users.csv";
+        String pathToCSV = "users.csv";
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();

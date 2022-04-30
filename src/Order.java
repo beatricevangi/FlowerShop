@@ -59,6 +59,7 @@ public class Order {
         String str = String.format("%.02f", subtotal);
         System.out.println("SUBTOTAL: " + str + "€");
         System.out.println("STATUS: " + status);
+        System.out.println("\n");
     }
 
     public boolean isComplete(){

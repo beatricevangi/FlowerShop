@@ -19,7 +19,8 @@ public abstract class Product {
     }
 
     public void display() {
-        System.out.println("Article: " + name + "          Price: " + price + "€");
+        String str = String.format("%.02f", price);
+        System.out.println("Article: " + name + "                    Price: " + str + "€");
     }
 
 }
