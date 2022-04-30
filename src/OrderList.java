@@ -7,10 +7,12 @@ import java.util.List;
 import java.lang.String;
 
 public class OrderList implements Subject {
-    private ArrayList<Observer> observers = new ArrayList<>();
-    private ArrayList<Order> orders = new ArrayList<>();
     public static OrderList ol = new OrderList();
+    private ArrayList<Observer> observers;
+    private ArrayList<Order> orders;
 
+    // Orderlist viene inizializzata nel metodo init(), che viene chiamato(dopo aver chiamato prima getInstance() che
+    // costruisce un orderlist VUOTA) nel run() di program.
     private OrderList() {
         init();
     }
@@ -56,11 +58,12 @@ public class OrderList implements Subject {
     public void init() {
         String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/order.csv";
         try {
-            CSVReader reader = new CSVReader(new FileReader(pathToCSV));
-            List<String[]> csvBody = reader.readAll();
+            reader = new CSVReader(new FileReader(pathToCSV));
+            csvBody = reader.readAll();
+
             for (String[] strings : csvBody) {
                 Customer c = Program.getInstance().getCustomerFromId(Integer.parseInt(strings[2]));
-                Order o = new Order(c);
+                o = new Order(c);
                 o.setComplete(Boolean.parseBoolean(strings[0]));
                 o.setStatus(strings[3]);
                 for (int j = 5; j < strings.length; j++) {
@@ -68,12 +71,16 @@ public class OrderList implements Subject {
                     o.addProduct(a);
                 }
             }
-            reader.close();
-        } catch (Exception e) {
+            if (o != null) {
+                orders.add(o);
+            }
+            else {
+                System.err.println("Errore nullo scem8");
+            }
+        } catch (Exception i) {
             System.err.println("Error: init on OrderList while reading csv");
         }
     }
-
 
     @Override
     public void notify(Object obj) {
@@ -91,8 +98,8 @@ public class OrderList implements Subject {
     }
 
     public void writeOrderOnCSV(Order order) {
-        String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/orders.csv";
-        try{
+        String pathToCSV = "orders.csv";
+        try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
 
@@ -104,9 +111,9 @@ public class OrderList implements Subject {
             neworder[3] = String.valueOf(order.getStatus());
             neworder[4] = String.valueOf(order.getSubtotal());
             int i = 0;
-            for(Product a : order.getComponents()){
+            for (Product a : order.getComponents()) {
                 neworder[5 + i] = a.getName();
-                i ++;
+                i++;
             }
             csvBody.add(neworder);
             reader.close();
@@ -117,14 +124,14 @@ public class OrderList implements Subject {
             writer.close();
 
 
-        } catch(Exception e){
+        } catch (Exception e) {
             System.err.println("Error: Csv Exception");
         }
 
     }
 
     public void refreshCSV(Order o) {
-        String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/order.csv";
+        String pathToCSV = "order.csv";
         File inputFile = new File(pathToCSV);
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));

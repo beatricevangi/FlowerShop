@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 
-
 public class Order {
-    private int id;
+    private final int id;
     private float subtotal;
     private boolean isComplete;
     private Customer c;
@@ -13,7 +12,10 @@ public class Order {
         isComplete = false;
         status = "processing";
         subtotal = 0;
-        this.id = OrderList.getInstance().getSize() - 1;
+        this.c = c;
+        articles = new ArrayList<>();
+        this.id = OrderList.getInstance().getSize();
+
     }
 
     public int getId() {
@@ -37,8 +39,8 @@ public class Order {
     public String getStatus() { return status; }
 
     public void displayOrderFloristPOV(){
-        System.out.println("ID: " + id);
-        System.out.println("CUSTOMER: " +  c);
+        System.out.println("ID:  " + id);
+        System.out.println("CUSTOMER:  " +  c);
         System.out.println("CONTENT:  ");
         for(Product a : articles)
             a.display();
@@ -49,11 +51,13 @@ public class Order {
     }
 
     public void displayOrderCustomerPOV(){
-        System.out.println("ID: " + id);
+        System.out.println("\n");
+        System.out.println("ID:  " + id);
         System.out.println("CONTENT:  " );
         for(Product a : articles)
             a.display();
-        System.out.println("SUBTOTAL" + subtotal);
+        String str = String.format("%.02f", subtotal);
+        System.out.println("SUBTOTAL: " + str + "€");
         System.out.println("STATUS: " + status);
     }
 

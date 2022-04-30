@@ -38,6 +38,8 @@ public class MenuFlorist implements Menu{
                 case 0:
                     currentFlorist.setLogged(false);
                     logout = true;
+                    Program.getInstance().setMenu(new LoginMenu());
+                    System.out.println("Logged out successfully. Bye bye!");
                     break;
 
                 default:

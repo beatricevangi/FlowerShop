@@ -21,4 +21,5 @@ public abstract class Product {
     public void display() {
         System.out.println("Article: " + name + "          Price: " + price + "€");
     }
+
 }

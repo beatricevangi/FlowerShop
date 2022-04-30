@@ -47,7 +47,7 @@ public class Storage implements Subject{
                 return i;
             }
         }
-        System.out.println("Non c'è nessun cazzetto qui, niente vigorsol :( ... ");
+        System.out.println("Non c'è nessun fio :( ... ");
         return null;
     }
 
