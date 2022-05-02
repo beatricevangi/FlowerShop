@@ -8,7 +8,6 @@ public class Supplier implements Observer {
 
     @Override
     public void update(Object str) {
-        System.out.println("Shipment coming in!");
         sendItem((String)str);
     }
 

@@ -10,7 +10,7 @@ public class Order {
 
     Order(Customer c){
         isComplete = false;
-        status = "processing";
+        status = "Processing";
         subtotal = 0;
         this.c = c;
         articles = new ArrayList<>();
@@ -39,8 +39,9 @@ public class Order {
     public String getStatus() { return status; }
 
     public void displayOrderFloristPOV(){
-        System.out.println("ID:  " + id);
-        System.out.println("CUSTOMER:  " +  c);
+        System.out.println("\n");
+        System.out.println("Order ID:  #" + id);
+        System.out.println("CUSTOMER:  " +  c.getName() + " " + c.getSurname());
         System.out.println("CONTENT:  ");
         for(Product a : articles)
             a.display();

@@ -57,7 +57,7 @@ public class OrderList implements Subject {
     }
 
     public void init() {
-        String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/orders.csv";
+        String pathToCSV = "orders.csv";
         List<String[]> csvBody = null;
         CSVReader reader = null;
         Order o = null;
@@ -136,7 +136,7 @@ public class OrderList implements Subject {
     }
 
     public void refreshCSV(Order o) {
-        String pathToCSV = "order.csv";
+        String pathToCSV = "orders.csv";
         File inputFile = new File(pathToCSV);
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
@@ -153,7 +153,7 @@ public class OrderList implements Subject {
             writer.flush();
             writer.close();
         } catch (Exception e) {
-            System.err.println("ERROR: csv exception");
+            System.err.println("ERROR: Csv Exception.");
         }
     }
 

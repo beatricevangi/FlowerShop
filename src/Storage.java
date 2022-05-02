@@ -1,7 +1,11 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Storage implements Subject{
     private ArrayList<Pair<String, Integer>> quantity = new ArrayList<>();
@@ -44,6 +48,7 @@ public class Storage implements Subject{
             if(i.getName().equals(name)){
                 storage.remove(i);
                 refresh(i.getName(), "remove");
+                checkQuantity();
                 return i;
             }
         }
@@ -55,7 +60,7 @@ public class Storage implements Subject{
         // metodo che aggiorna la lista che tiene conto delle quantità
         for (Pair<String, Integer> stringIntegerPair : quantity) {
             if (name.equals(stringIntegerPair.first)) {
-                if (flag.equals("add"))
+                if (flag.equals("add")){
                     stringIntegerPair.second++;
                 if (flag.equals("remove"))
                     stringIntegerPair.second--;

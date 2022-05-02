@@ -17,10 +17,11 @@ public class MenuCustomer implements Menu{
         }
 
         do {
-            System.out.println("Welcome to the FLORIST SHOP, " + currentCustomer.getName());
-            System.out.println("1: my orders");
-            System.out.println("2: place an order");
-            System.out.println("3: logout");
+            System.out.println("Welcome to the FLORIST SHOP, " + currentCustomer.getName() +"!");
+            System.out.println("Choose an option below:");
+            System.out.println("1: View my orders");
+            System.out.println("2: Place an order");
+            System.out.println("3: Logout");
 
             Scanner input = new Scanner(System.in);
             menuItem = input.nextInt();

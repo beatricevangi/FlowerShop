@@ -36,7 +36,6 @@ public class Program {
                     users.add(c);
                 }
             }
-
             reader.close();
         } catch (Exception e) {
             System.err.println("Error: init on Program while reading csv");

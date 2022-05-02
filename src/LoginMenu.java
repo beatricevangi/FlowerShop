@@ -24,11 +24,10 @@ public class LoginMenu implements Menu {
         boolean quit = false; // questo x uscire dal menu
         int menuItem;
         do {
-            System.out.println("Menu option:");
-            System.out.println("1. login");
-            System.out.println("2. sign in");
-            System.out.println("0. quit");
-            System.out.print("Choose menu item: ");
+            System.out.println("Choose an option below:");
+            System.out.println("1. Login");
+            System.out.println("2. Sign in");
+            System.out.println("0. Quit");
             try {
                 menuItem = Integer.parseInt(in.next());
             } catch (Exception e) {

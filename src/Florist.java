@@ -4,7 +4,6 @@ public class Florist extends User {
     private Storage s;
     private ShippingCompany sc;
 
-
     public Florist(String email, String name, String surname, String address, String pass, boolean log){
         this.email = email;
         this.name = name;
@@ -49,10 +48,8 @@ public class Florist extends User {
             currentorder.setComplete(true);
             currentorder.setStatus("Ready");
             OrderList.getInstance().refreshCSV(currentorder);
-            System.out.println("L'ordine " + currentorder.getId() + " è stato completato.");
-            sendOrder(box);
         } else {
-            System.out.println("Non ci sono ordini da processare.");
+            System.out.println("There are no orders to process.");
         }
     }
 }

@@ -1,10 +1,12 @@
+import java.util.concurrent.TimeUnit;
+
 public class ShippingCompany {
 
     public void ship(Box b){
         try {
             b.setOrderStatus("Shipped");
-            System.out.print("Ci pensa Bartolini!");
-            System.out.wait(1000);
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("Order delivered. \n");
             b.setOrderStatus("Delivered");
         }catch (InterruptedException e) {
             throw new RuntimeException(e);
