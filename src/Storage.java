@@ -31,10 +31,9 @@ public class Storage implements Subject{
             for (String[] strings : csvBody) {
                 Pair pair = new Pair(strings[0], Integer.parseInt(strings[1]));
                 quantity.add(pair);
-                int merda = Integer.parseInt(strings[1]);
-                for(int i = 0; i < merda; i++){
+                for(int i = 0; i < Integer.parseInt(strings[1]); i++){
                     Product p = Catalog.getInstance().cloneCatalogItem(strings[0], true);
-                    restock(p);
+                    storage.add(p);
                 }
             }
             reader.close();
