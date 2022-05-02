@@ -33,7 +33,7 @@ public class Catalog {
                 addToFloristCatalog(d);
                 addToSupplierCatalog(d2);
             }
-            displayFloristCatalog();
+
             reader.close();
 
             pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/bouquet.csv";
@@ -48,7 +48,6 @@ public class Catalog {
                 addToFloristCatalog(b);
             }
 
-            displayFloristCatalog();
 
         } catch (Exception e) {
             System.err.println("Error: Csv Exception");

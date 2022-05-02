@@ -8,17 +8,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Storage implements Subject{
-    private ArrayList<Pair<String, Integer>> quantity = new ArrayList<>();
+    private ArrayList<Pair<String, Integer>> quantity;
     public ArrayList<Observer> observers;
     private ArrayList<Product> storage;
     int minimum = 15;
 
     public Storage(){
-        for (String s : Arrays.asList("tulip", "peony", "laurel", "gardenia", "lily", "rose")) {
-            quantity.add(new Pair<>(s, 0));
-            refresh(s, " ");
+        quantity = new ArrayList<>();
+        storage = new ArrayList<>();
+        observers = new ArrayList<>();
+        initObs();
+        initStorage();
+        checkQuantity();
+    }
+
+    public void initStorage(){
+        String pathToCSV = "storage.csv";
+        try {
+            CSVReader reader = new CSVReader(new FileReader(pathToCSV));
+            List<String[]> csvBody = reader.readAll();
+            for (String[] strings : csvBody) {
+                Pair pair = new Pair(strings[0], Integer.parseInt(strings[1]));
+                quantity.add(pair);
+                int merda = Integer.parseInt(strings[1]);
+                for(int i = 0; i < merda; i++){
+                    Product p = Catalog.getInstance().cloneCatalogItem(strings[0], true);
+                    restock(p);
+                }
+            }
+            reader.close();
+        } catch (Exception e) {
+            System.err.println("Error: init on Storage while reading csv.");
         }
     }
+
+    public void initObs(){
+        Supplier supp = new Supplier(this);
+    }
+
 
     @Override
     public void notify(Object name){
@@ -62,12 +89,55 @@ public class Storage implements Subject{
             if (name.equals(stringIntegerPair.first)) {
                 if (flag.equals("add")){
                     stringIntegerPair.second++;
-                if (flag.equals("remove"))
+                    refreshCSV(name, stringIntegerPair.second);
+                }
+                if (flag.equals("remove")){
                     stringIntegerPair.second--;
-                if (stringIntegerPair.second < minimum) {
-                    notify(stringIntegerPair.first);
+                    refreshCSV(name, stringIntegerPair.second);
                 }
             }
+        }
+    }
+
+    public void refreshCSV(String str, int q){
+        String pathToCSV = "storage.csv";
+        File inputFile = new File(pathToCSV);
+        try {
+            CSVReader reader = new CSVReader(new FileReader(pathToCSV));
+            List<String[]> csvBody = reader.readAll();
+            for (String[] strings : csvBody) {
+                if(strings[0].equals(str)){
+                    strings[1] = String.valueOf(q);
+                }
+            }
+            reader.close();
+            CSVWriter writer = new CSVWriter(new FileWriter(inputFile));
+            writer.writeAll(csvBody);
+            writer.flush();
+            writer.close();
+        } catch (Exception e) {
+            System.err.println("ERROR: Storage Csv Exception.");
+        }
+    }
+
+    public void checkQuantity() {
+        String str = "";
+        for (Pair<String, Integer> stringIntegerPair : quantity) {
+            if (stringIntegerPair.second < minimum) {
+                notify(stringIntegerPair.first);
+                str = str + stringIntegerPair.first + "\n";
+            }
+        }
+        if(!str.equals("")) {
+            System.out.println("Storage updated. Items added: \n" + str);
+        }
+    }
+
+    public void display(){
+        System.out.println("\n");
+        System.out.println("Storage items: ");
+        for (Pair<String, Integer> stringIntegerPair : quantity) {
+            System.out.println("-" + stringIntegerPair.first + "          " + stringIntegerPair.second);
         }
     }
 }

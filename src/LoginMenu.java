@@ -34,12 +34,12 @@ public class LoginMenu implements Menu {
                 menuItem = -1;
             }
 
-            System.out.println(menuItem);
             switch (menuItem) {
 
                 case 0:
                     quit = true;
                     Program.getInstance().setQuit(true);
+                    System.out.println("Flower Shop is being shut.");
                     break;
 
 

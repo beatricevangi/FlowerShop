@@ -4,6 +4,7 @@ public class ShippingCompany {
 
     public void ship(Box b){
         try {
+            System.out.println("Order shipped.");
             b.setOrderStatus("Shipped");
             TimeUnit.SECONDS.sleep(5);
             System.out.println("Order delivered. \n");
@@ -14,11 +15,12 @@ public class ShippingCompany {
     }
 
     public void schedulePickUp() {
-        try {
-            System.out.println("Withdrawl scheduled");
-            System.out.wait(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        try{
+        TimeUnit.SECONDS.sleep(2);
+        System.out.println("Withdrawl scheduled.");
+        }
+        catch (InterruptedException e) {
+            System.err.println("Error: interrupted exception.");
         }
     }
 }

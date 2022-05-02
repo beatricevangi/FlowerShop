@@ -1,5 +1,6 @@
+import java.util.concurrent.TimeUnit;
+
 public class Florist extends User {
-    private OrderList ol;
     private Order currentorder;
     private Storage s;
     private ShippingCompany sc;
@@ -12,10 +13,12 @@ public class Florist extends User {
         this.encodedpass = pass;
         this.logged = log;
         this.id = Program.getInstance().getNumUsers();
+        this.s = new Storage();
+        this.sc = new ShippingCompany();
     }
 
     public void pickOrder() {
-        Order currentorder = ol.getOrder();
+        this.currentorder = OrderList.getInstance().getOrder();
     }
 
     public void sendOrder(Box b) {
@@ -46,10 +49,16 @@ public class Florist extends User {
             }
             box.close();
             currentorder.setComplete(true);
-            currentorder.setStatus("Ready");
+            System.out.println("The order #" + currentorder.getId() + " is completed.");
+
+            sendOrder(box);
             OrderList.getInstance().refreshCSV(currentorder);
         } else {
             System.out.println("There are no orders to process.");
         }
+    }
+
+    public void checkStorage(){
+        s.display();
     }
 }

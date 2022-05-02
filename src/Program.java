@@ -38,7 +38,7 @@ public class Program {
             }
             reader.close();
         } catch (Exception e) {
-            System.err.println("Error: init on Program while reading csv");
+            System.err.println("Error: init on Program while reading csv.");
         }
     }
 
@@ -56,6 +56,7 @@ public class Program {
         OrderList.getInstance().init();
         ol = OrderList.getInstance();
 
+
         while (!quit) {
             menu.show();
         }
@@ -65,7 +66,7 @@ public class Program {
         for (User u : users) {
             if (u.getEmail().equals(email)) {
                 if (Objects.equals(u.getHashPass(), encoded)) {
-                    System.out.println("Successfully logged in");
+                    System.out.println("Successfully logged in.");
                     u.setLogged(true);
                     currentUser = getUser(email);
                 } else {
@@ -74,6 +75,10 @@ public class Program {
                 }
             }
         }
+    }
+
+    public void logout(){
+        currentUser = null;
     }
 
     public void signIn(String category, String email, String name, String surname, String address, String encoded) {
@@ -104,7 +109,7 @@ public class Program {
             writer.flush();
             writer.close();
         } catch (Exception e) {
-            System.err.println("Error: Csv Exception");
+            System.err.println("Error: Csv Exception.");
         }
     }
 

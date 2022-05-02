@@ -28,7 +28,7 @@ public class MenuCustomer implements Menu{
 
             switch (menuItem) {
                 case 1:
-                    System.out.println("Here's your order list :)");
+                    System.out.println("Here's your order list: \n");
                     OrderList.getInstance().printCustomerOrders(currentCustomer);
                     break;
 
@@ -40,6 +40,7 @@ public class MenuCustomer implements Menu{
                 case 3:
                     currentCustomer.setLogged(false);
                     logout = true;
+                    Program.getInstance().logout();
                     Program.getInstance().setMenu(new LoginMenu());
                     System.out.println("Logged out successfully. Bye bye!");
                     break;

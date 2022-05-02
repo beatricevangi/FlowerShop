@@ -46,7 +46,7 @@ public class OrderList implements Subject {
     }
 
     public void displayOrders() {
-        System.out.println("Completati:");
+        // System.out.println("Completati:");
         for (Order o : orders) {
             o.displayOrderFloristPOV();
         }
@@ -74,15 +74,14 @@ public class OrderList implements Subject {
                     Product a = Catalog.getInstance().cloneCatalogItem(strings[j], true);
                     o.addProduct(a);
                 }
-            }
-            if (o != null) {
-                orders.add(o);
-            }
-            else {
-                System.err.println("Errore nullo scem8");
+                if (o != null) {
+                    orders.add(o);
+                } else {
+                    System.err.println("Errore nullo scem8.");
+                }
             }
         } catch (Exception i) {
-            System.err.println("Error: init on OrderList while reading csv");
+            System.err.println("Error: init on OrderList while reading csv.");
         }
     }
 
@@ -130,7 +129,7 @@ public class OrderList implements Subject {
 
 
         } catch (Exception e) {
-            System.err.println("Error: Csv Exception");
+            System.err.println("Error: Csv Exception.");
         }
 
     }
@@ -143,8 +142,9 @@ public class OrderList implements Subject {
             List<String[]> csvBody = reader.readAll();
             for (String[] strings : csvBody) {
                 int a = o.getId();
-                if (strings[1].equals(Integer.toString(a))) {
+                if (strings[1].equals(String.valueOf(a))) {
                     strings[3] = o.getStatus();
+                    strings[0] = String.valueOf(o.isComplete());
                 }
             }
             reader.close();
@@ -156,6 +156,7 @@ public class OrderList implements Subject {
             System.err.println("ERROR: Csv Exception.");
         }
     }
+
 
     @Override
     public void subscribe(Observer obs) {

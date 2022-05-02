@@ -46,13 +46,14 @@ public class Order {
         for(Product a : articles)
             a.display();
         if(isComplete)
-            System.out.println("\n COMPLETED");
+            System.out.println("                        COMPLETED");
         else
-            System.out.println("TO BE DONE");
+            System.out.println("                        TO BE DONE");
+
+
     }
 
     public void displayOrderCustomerPOV(){
-        System.out.println("\n");
         System.out.println("ID:  " + id);
         System.out.println("CONTENT:  " );
         for(Product a : articles)

@@ -50,7 +50,7 @@ public class MenuFlorist implements Menu{
                     break;
 
                 default:
-                    System.err.println("Invalid input");
+                    System.err.println("Invalid input.");
             }
         }
         while(!logout);

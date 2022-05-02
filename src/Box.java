@@ -11,7 +11,11 @@ public class Box {
     }
 
     public void pack(Product p){
-        products.add(p);
+        if(!isClosed)
+            products.add(p);
+        else{
+            System.out.println("Box closed.");
+        }
     }
 
     public boolean isClosed() {
