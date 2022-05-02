@@ -17,7 +17,7 @@ public class MenuCustomer implements Menu{
         }
 
         do {
-            System.out.println("Welcome to the FLORIST SHOP, " + currentCustomer.getName() +"!");
+
             System.out.println("Choose an option below:");
             System.out.println("1: View my orders");
             System.out.println("2: Place an order");

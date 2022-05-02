@@ -17,7 +17,6 @@ public class MenuFlorist implements Menu{
         }
 
         do{
-            System.out.println("Welcome " +  currentFlorist.getName() + "!");
             System.out.println("Choose an option below:");
             System.out.println("1. Fill order");
             System.out.println("2: View order list");

@@ -77,12 +77,6 @@ public class Catalog {
         }
     }
 
-    public void displaySupplierCatalog() {
-        for (Product item : suppliercat) {
-            item.display();
-        }
-    }
-
     public Product cloneCatalogItem(String s, boolean floristcat) {
         Product copy = null;
         ArrayList<Product> list;
@@ -114,7 +108,4 @@ public class Catalog {
         return floristcat.get(num - 1);
     }
 
-    public Product getSupplierProduct(int num) {
-        return suppliercat.get(num - 1);
-    }
 }

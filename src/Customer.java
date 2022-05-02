@@ -40,12 +40,6 @@ public class Customer extends User{
         return Catalog.getInstance().getFloristProduct(input.nextInt());
     }
 
-    public void myOrders(){
-        if(logged) {
-           OrderList.getInstance().printCustomerOrders(this);
-        }
-    }
-
     public String getEmail(){
         return email;
     }

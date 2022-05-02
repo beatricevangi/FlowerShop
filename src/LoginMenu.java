@@ -24,6 +24,7 @@ public class LoginMenu implements Menu {
         boolean quit = false; // questo x uscire dal menu
         int menuItem;
         do {
+            System.out.println("Welcome to the Flower Shop!");
             System.out.println("Choose an option below:");
             System.out.println("1. Login");
             System.out.println("2. Sign in");
