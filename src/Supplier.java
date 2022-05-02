@@ -18,7 +18,6 @@ public class Supplier implements Observer {
             this.s = s;
             s.subscribe(this);
         }
-
     }
 
     public void sendItem(String str) {

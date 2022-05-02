@@ -2,10 +2,9 @@ public abstract class User {
     protected String name;
     protected String surname;
     protected String email;
-    protected String encodedpass;
+    protected String hashpass;
     protected String address;
     protected int id;
-
     protected boolean logged;
 
 
@@ -38,11 +37,11 @@ public abstract class User {
     public void setAddress(String address){ this.address = address; }
 
     public String getHashPass() {
-        return encodedpass;
+        return hashpass;
     }
 
     public void setPassword(String encoded) {
-        this.encodedpass = encoded;
+        this.hashpass = encoded;
     }
 
     public int getId() {

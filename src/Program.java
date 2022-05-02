@@ -56,7 +56,6 @@ public class Program {
         OrderList.getInstance().init();
         ol = OrderList.getInstance();
 
-
         while (!quit) {
             menu.show();
         }

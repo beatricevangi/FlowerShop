@@ -50,6 +50,9 @@ public class OrderList implements Subject {
         for (Order o : orders) {
             o.displayOrderFloristPOV();
         }
+        if (orders.size()==0){
+            System.out.println("No orders to show.");
+        }
     }
 
     public void removeOrder(Order o) {
@@ -84,7 +87,6 @@ public class OrderList implements Subject {
             System.err.println("Error: init on OrderList while reading csv.");
         }
     }
-
 
     @Override
     public void notify(Object obj) {
@@ -126,8 +128,6 @@ public class OrderList implements Subject {
             writer.writeAll(csvBody);
             writer.flush();
             writer.close();
-
-
         } catch (Exception e) {
             System.err.println("Error: Csv Exception.");
         }

@@ -1,5 +1,3 @@
-import java.util.concurrent.TimeUnit;
-
 public class Florist extends User {
     private Order currentorder;
     private Storage s;
@@ -10,7 +8,7 @@ public class Florist extends User {
         this.name = name;
         this.surname = surname;
         this.address = address;
-        this.encodedpass = pass;
+        this.hashpass = pass;
         this.logged = log;
         this.id = Program.getInstance().getNumUsers();
         this.s = new Storage();
@@ -32,6 +30,7 @@ public class Florist extends User {
 
     public void fillOrder() {
         pickOrder();
+        System.out.println("The order is being processed.");
         if (currentorder != null) {
             Box box = new Box(currentorder);
             for (Product i : currentorder.getComponents()) {

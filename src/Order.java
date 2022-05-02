@@ -49,8 +49,6 @@ public class Order {
             System.out.println("                        COMPLETED");
         else
             System.out.println("                        TO BE DONE");
-
-
     }
 
     public void displayOrderCustomerPOV(){
@@ -64,6 +62,11 @@ public class Order {
         System.out.println("\n");
     }
 
+    void addProduct(Product p){
+        articles.add(p);
+        subtotal += p.getPrice();
+    }
+
     public boolean isComplete(){
         return isComplete;
     }
@@ -72,8 +75,5 @@ public class Order {
         isComplete = c;
     }
 
-    void addProduct(Product p){
-        articles.add(p);
-        subtotal += p.getPrice();
-    }
+
 }

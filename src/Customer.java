@@ -7,7 +7,7 @@ public class Customer extends User{
         this.name = name;
         this.surname = surname;
         this.address = address;
-        this.encodedpass = pass;
+        this.hashpass = pass;
         this.logged = logged;
         this.id = Program.getInstance().getNumUsers();
     }
