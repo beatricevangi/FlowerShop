@@ -33,7 +33,7 @@ public class MenuFlorist implements Menu{
                     logout = true;
                     Program.getInstance().logout();
                     Program.getInstance().setMenu(new LoginMenu());
-                    System.out.println("Logged out successfully. Bye bye!");
+                    System.out.println("Logged out successfully. Bye bye! \n");
                     break;
 
                 case 1:

@@ -1,4 +1,3 @@
-
 public class Supplier implements Observer {
     private Storage s;
 
@@ -12,14 +11,6 @@ public class Supplier implements Observer {
         sendItem((String)str);
     }
 
-    public void setSubject(Storage s) {
-        if (s != null) {
-            this.s.unsubscribe(this);
-            this.s = s;
-            s.subscribe(this);
-        }
-    }
-
     public void sendItem(String str) {
         // obj in realtà sarà una stringa che è il nome del fiore che mandiamo
         Catalog c = Catalog.getInstance();
@@ -27,6 +18,14 @@ public class Supplier implements Observer {
             Product p = c.cloneCatalogItem(str, false);
             p.setPrice(p.getPrice()/(float)0.35);
             s.restock(p);
+        }
+    }
+
+    public void setSubject(Storage s) {
+        if (s != null) {
+            this.s.unsubscribe(this);
+            this.s = s;
+            s.subscribe(this);
         }
     }
 }

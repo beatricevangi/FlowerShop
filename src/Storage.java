@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Storage implements Subject{
     private ArrayList<Pair<String, Integer>> quantity;
@@ -46,7 +45,6 @@ public class Storage implements Subject{
         Supplier supp = new Supplier(this);
     }
 
-
     @Override
     public void notify(Object name){
         for(Observer o : observers){
@@ -71,11 +69,7 @@ public class Storage implements Subject{
 
     public Product getItem(String name){
         //chiamato da fioraio per prendere imgridietnz
-        try{
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            System.err.println("Error: interrupted exception");
-        }
+        Program.getInstance().hold(1);
         for (Product i : storage){
             if(i.getName().equals(name)){
                 storage.remove(i);

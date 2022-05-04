@@ -1,9 +1,16 @@
 public class CustomerNotifier implements Observer {
+    private ArrayList<Subject> subjects;
+
+
+    public CustomerNotifier(){
+        subjects = new ArrayList<>();
+    }
+
 
     @Override
-    public void update(Object obj) { //obj è ordine
+    public void update(Object obj) { //obj è ordine, valutare se passare altro for the designn
         if (obj instanceof Order){
-            sendMail(((Order) obj).getCustomer(), ((Order) obj).isComplete());
+            sendMail((Order) obj);
         }
         else {
             System.out.println("Order not received.");
@@ -19,5 +26,3 @@ public class CustomerNotifier implements Observer {
         }
     }
 }
-
-

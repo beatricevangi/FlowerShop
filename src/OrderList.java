@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.lang.String;
 
-public class OrderList implements Subject {
+public class OrderList{
     public static OrderList ol = new OrderList();
     private ArrayList<Observer> observers;
     private ArrayList<Order> orders;
@@ -14,7 +14,6 @@ public class OrderList implements Subject {
     // Orderlist viene inizializzata nel metodo init(), che viene chiamato(dopo aver chiamato prima getInstance() che
     // costruisce un orderlist VUOTA) nel run() di program.
     private OrderList() {
-        observers = new ArrayList<>();
         orders = new ArrayList<>();
     }
 
@@ -46,7 +45,6 @@ public class OrderList implements Subject {
     }
 
     public void displayOrders() {
-        // System.out.println("Completati:");
         for (Order o : orders) {
             o.displayOrderFloristPOV();
         }
@@ -70,9 +68,7 @@ public class OrderList implements Subject {
 
             for (String[] strings : csvBody) {
                 Customer c = Program.getInstance().getCustomerFromId(Integer.parseInt(strings[2]));
-                o = new Order(c);
-                o.setComplete(Boolean.parseBoolean(strings[0]));
-                o.setStatus(strings[3]);
+                o = new Order (c, Boolean.parseBoolean(strings[0]), strings[3]);
                 for (int j = 5; j < strings.length; j++) {
                     Product a = Catalog.getInstance().cloneCatalogItem(strings[j], true);
                     o.addProduct(a);
@@ -100,6 +96,9 @@ public class OrderList implements Subject {
             if (o.getCustomer() == c) {
                 o.displayOrderCustomerPOV();
             }
+        }
+        if (!flag){
+            System.out.println("No orders to show!");
         }
     }
 
@@ -131,7 +130,6 @@ public class OrderList implements Subject {
         } catch (Exception e) {
             System.err.println("Error: Csv Exception.");
         }
-
     }
 
     public void refreshCSV(Order o) {

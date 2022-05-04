@@ -33,12 +33,31 @@ public class Customer extends User{
     }
 
     public Product chooseProduct() {
-        Catalog c = Catalog.getInstance();
-        c.displayFloristCatalog();
-        System.out.println("Select the number of the product to add to your order");
-        Scanner input = new Scanner(System.in);
-        return Catalog.getInstance().getFloristProduct(input.nextInt());
+        String r = null;
+        int f;
+        try {
+            Catalog.getInstance().displayFloristCatalog();
+            System.out.println("Select the number of the product to add to your order");
+            Scanner input = new Scanner(System.in);
+            r = input.nextLine();
+            f = Integer.parseInt(r);
+
+        } catch (Exception e) {
+            System.out.println("ERROR invalid input: can't find the number " + r + "in the catalog.");
+            Program.getInstance().hold(2);
+            return chooseProduct();
+        }
+        if (f < 1 || f > Catalog.getInstance().getFloristCatSize()){
+            System.out.println("ERROR invalid input: can't find the number " + r + "in the catalog.");
+            Program.getInstance().hold(2);
+            return chooseProduct();
+        }
+        else {
+            return Catalog.getInstance().getFloristProduct(f);
+        }
     }
+
+
 
     public String getEmail(){
         return email;

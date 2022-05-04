@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class Program {
     public static Program p = new Program();
@@ -155,5 +156,15 @@ public class Program {
 
     public void setQuit(boolean quit) {
         this.quit = quit;
+    }
+
+    public CustomerNotifier getCustomerNotifier(){return cn;}
+
+    public void hold(int seconds){
+        try{
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e){
+            System.err.println("Error: interrupted exception.");
+        }
     }
 }
