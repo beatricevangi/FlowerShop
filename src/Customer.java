@@ -26,6 +26,9 @@ public class Customer extends User{
                 }
             }
             OrderList.getInstance().putOrder(newOrder);
+            Program.getInstance().getCustomerNotifier().addSubject(newOrder);
+            newOrder.subscribe(Program.getInstance().getCustomerNotifier());
+            newOrder.notify(null);
         }
         else{
             System.err.println("Authentication failed.");

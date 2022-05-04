@@ -75,6 +75,7 @@ public class OrderList{
                 }
                 if (o != null) {
                     orders.add(o);
+                    Program.getInstance().getCustomerNotifier().addSubject(o);
                 } else {
                     System.err.println("Errore nullo scem8.");
                 }
@@ -92,8 +93,10 @@ public class OrderList{
     }
 
     public void printCustomerOrders(Customer c) {
+        boolean flag = false;
         for (Order o : orders) {
             if (o.getCustomer() == c) {
+                flag = true;
                 o.displayOrderCustomerPOV();
             }
         }

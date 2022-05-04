@@ -107,4 +107,7 @@ public class Catalog {
         return floristcat.get(num - 1);
     }
 
+    public int getFloristCatSize(){
+        return floristcat.size();
+    }
 }

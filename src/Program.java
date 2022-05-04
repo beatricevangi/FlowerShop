@@ -12,35 +12,15 @@ public class Program {
     private final ArrayList<User> users;
     private User currentUser;
     private Menu menu;
+    private CustomerNotifier cn;
     private boolean quit = false;
-    public OrderList ol;
+
 
     private Program() {
         currentUser = null;
         users = new ArrayList<>();
         menu = new LoginMenu();
-
-    }
-
-    public void initUsers() {
-        String pathToCSV = "users.csv";
-        try {
-            CSVReader reader = new CSVReader(new FileReader(pathToCSV));
-            List<String[]> csvBody = reader.readAll();
-            for (String[] strings : csvBody) {
-                if (strings[0].equals("florist")) {
-                    Florist f = new Florist(strings[1], strings[2], strings[3], strings[4], strings[5], false );
-                    users.add(f);
-                }
-                if (strings[0].equals("customer")) {
-                    Customer c = new Customer(strings[1], strings[2], strings[3], strings[4], strings[5], false );
-                    users.add(c);
-                }
-            }
-            reader.close();
-        } catch (Exception e) {
-            System.err.println("Error: init on Program while reading csv.");
-        }
+        cn = new CustomerNotifier();
     }
 
     public void setMenu(Menu menu) {
@@ -53,9 +33,9 @@ public class Program {
 
     public void run() {
         initUsers();
+        initInboxes();
         createCatalog();
         OrderList.getInstance().init();
-        ol = OrderList.getInstance();
 
         while (!quit) {
             menu.show();
@@ -94,7 +74,6 @@ public class Program {
         writeUserOnCSV(category, currentUser);
     }
 
-
     public void writeUserOnCSV(String category, User currentUser) {
         String pathToCSV = "users.csv";
         try {
@@ -111,6 +90,50 @@ public class Program {
             writer.close();
         } catch (Exception e) {
             System.err.println("Error: Csv Exception.");
+        }
+    }
+
+
+
+    public void initUsers() {
+        String pathToCSV = "users.csv";
+        try {
+            CSVReader reader = new CSVReader(new FileReader(pathToCSV));
+            List<String[]> csvBody = reader.readAll();
+            for (String[] strings : csvBody) {
+                if (strings[0].equals("florist")) {
+                    Florist f = new Florist(strings[1], strings[2], strings[3], strings[4], strings[5], false );
+                    users.add(f);
+                }
+                if (strings[0].equals("customer")) {
+                    Customer c = new Customer(strings[1], strings[2], strings[3], strings[4], strings[5], false );
+                    users.add(c);
+                }
+            }
+            reader.close();
+        } catch (Exception e) {
+            System.err.println("Error: init on Program while reading csv.");
+        }
+    }
+
+    public void initInboxes(){
+        String pathToCSV = "messages.csv";
+        try {
+            CSVReader reader = new CSVReader(new FileReader(pathToCSV));
+            List<String[]> csvBody = reader.readAll();
+            for (User u : users) {
+                if(u instanceof Customer){
+                    for (String[] strings : csvBody) {
+                        if(Integer.parseInt(strings[0]) == u.getId()){
+                            Message msg = new Message(((Customer)u), strings[1], strings[2], Boolean.parseBoolean(strings[3]));
+                            ((Customer) u).deliverMessage(msg);
+                        }
+                    }
+                }
+            }
+            reader.close();
+        } catch (Exception e) {
+            System.err.println("Error: Program error while initializing message csv.");
         }
     }
 
@@ -153,6 +176,7 @@ public class Program {
     public int getNumUsers() {
         return users.size();
     }
+
 
     public void setQuit(boolean quit) {
         this.quit = quit;
