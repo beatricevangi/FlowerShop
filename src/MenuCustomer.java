@@ -5,7 +5,7 @@ public class MenuCustomer implements Menu{
     @Override
     public void show() {
         int menuItem;
-        boolean logout = false;
+        boolean exit = false;
         Customer currentCustomer = null;
 
         if(Program.getInstance().getCurrentUser() instanceof Customer){
@@ -48,7 +48,7 @@ public class MenuCustomer implements Menu{
 
                 case 0:
                     currentCustomer.setLogged(false);
-                    logout = true;
+                    exit = true;
                     Program.getInstance().logout();
                     Program.getInstance().setMenu(new LoginMenu());
                     System.out.println("Logged out successfully. Bye bye! \n");
@@ -57,7 +57,7 @@ public class MenuCustomer implements Menu{
                 default:
                     System.err.println("Invalid input.");
             }
-        } while(!logout);
+        } while(!exit);
     }
 
 }

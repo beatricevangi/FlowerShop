@@ -8,8 +8,8 @@ import java.lang.String;
 
 public class OrderList{
     public static OrderList ol = new OrderList();
-    private ArrayList<Observer> observers;
     private ArrayList<Order> orders;
+
 
     // Orderlist viene inizializzata nel metodo init(), che viene chiamato(dopo aver chiamato prima getInstance() che
     // costruisce un orderlist VUOTA) nel run() di program.
@@ -40,8 +40,8 @@ public class OrderList{
 
     public void putOrder(Order o) {
         this.orders.add(o);
+        o.notify(null);
         writeOrderOnCSV(o);
-        notify(o);
     }
 
     public void displayOrders() {
@@ -82,13 +82,6 @@ public class OrderList{
             }
         } catch (Exception i) {
             System.err.println("Error: init on OrderList while reading csv.");
-        }
-    }
-
-    @Override
-    public void notify(Object obj) {
-        for (Observer o : observers) {
-            o.update(obj);
         }
     }
 
@@ -156,16 +149,5 @@ public class OrderList{
         } catch (Exception e) {
             System.err.println("ERROR: Csv Exception.");
         }
-    }
-
-
-    @Override
-    public void subscribe(Observer obs) {
-        observers.add(obs);
-    }
-
-    @Override
-    public void unsubscribe(Observer obs) {
-        observers.remove(obs);
     }
 }

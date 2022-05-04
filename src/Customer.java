@@ -1,8 +1,13 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Customer extends User{
+    private ArrayList<Message> inbox;
+
 
     public Customer(String email, String name, String surname, String address, String pass, boolean logged){
+        inbox = new ArrayList<Message>();
         this.email = email;
         this.name = name;
         this.surname = surname;
@@ -10,6 +15,29 @@ public class Customer extends User{
         this.hashpass = pass;
         this.logged = logged;
         this.id = Program.getInstance().getNumUsers();
+    }
+
+    public void deliverMessage(Message m){
+        inbox.add(m);
+    }
+
+    public void viewInbox(){
+        for(Message m : inbox){
+            if(!m.isRead()) {
+                System.out.println("NEW MESSAGE!");
+            }
+            m.display();
+        }
+        if(inbox.size() == 0)
+            System.out.println("There are no messages.\n");
+    }
+
+    public void cleanInbox(){
+        if(!inbox.isEmpty()) {
+            inbox.get(0).writeMessageOnCSV(false);
+            inbox = new ArrayList<>();
+        }
+
     }
 
     public void createOrder(){

@@ -5,7 +5,8 @@ public class Order implements Subject{
     private float subtotal;
     private boolean isComplete;
     private Customer c;
-    private ArrayList<Product> articles;
+    private ArrayList<Product> articles = new ArrayList<>();
+    private ArrayList<Observer> observers = new ArrayList<>();
     private String status;
 
     Order(Customer c){
@@ -13,7 +14,14 @@ public class Order implements Subject{
         status = "Processing";
         subtotal = 0;
         this.c = c;
-        articles = new ArrayList<>();
+        this.id = OrderList.getInstance().getSize();
+    }
+
+    Order (Customer c, boolean isComplete, String status){
+        this.isComplete = isComplete;
+        this.status = status;
+        subtotal = 0;
+        this.c = c;
         this.id = OrderList.getInstance().getSize();
     }
 
@@ -77,4 +85,20 @@ public class Order implements Subject{
     }
 
 
+    @Override
+    public void notify(Object obj) {
+        for (Observer o : observers) {
+            o.update(this);
+        }
+    }
+
+    @Override
+    public void subscribe(Observer obs) {
+        observers.add(obs);
+    }
+
+    @Override
+    public void unsubscribe(Observer obs) {
+        observers.remove(obs);
+    }
 }
