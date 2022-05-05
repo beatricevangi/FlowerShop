@@ -51,7 +51,7 @@ public class Catalog {
         } catch (Exception e) {
             System.err.println("Error: Csv Exception");
         }
-     }
+    }
 
 
     public static Catalog getInstance() {

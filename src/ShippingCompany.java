@@ -6,7 +6,6 @@ public class ShippingCompany {
         Program.getInstance().hold(5);
         System.out.println("Order delivered. \n");
         b.setOrderStatus("Delivered");
-
     }
 
     public void schedulePickUp() {

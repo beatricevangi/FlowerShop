@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Customer extends User{
@@ -17,7 +16,7 @@ public class Customer extends User{
         this.id = Program.getInstance().getNumUsers();
     }
 
-    public void deliverMessage(Message m){
+    public void receiveMessage(Message m){
         inbox.add(m);
     }
 
@@ -32,12 +31,11 @@ public class Customer extends User{
             System.out.println("There are no messages.\n");
     }
 
-    public void cleanInbox(){
+    public void clearInbox(){
         if(!inbox.isEmpty()) {
             inbox.get(0).writeMessageOnCSV(false);
             inbox = new ArrayList<>();
         }
-
     }
 
     public void createOrder(){

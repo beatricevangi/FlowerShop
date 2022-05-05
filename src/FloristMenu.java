@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class MenuFlorist implements Menu{
+public class FloristMenu implements Menu{
 
     @Override
     public void show() {

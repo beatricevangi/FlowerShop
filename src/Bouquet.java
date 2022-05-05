@@ -4,7 +4,6 @@ import java.util.ArrayList;
 public class Bouquet extends Product {
     private final ArrayList<Product> childProduct;
 
-
     final Bouquet getComposite() {
         return this;
     }
@@ -43,5 +42,4 @@ public class Bouquet extends Product {
         }
         return copy;
     }
-
 }

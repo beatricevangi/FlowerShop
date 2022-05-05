@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Order implements Subject{
-    private final int id;
+    private int id;
     private float subtotal;
     private boolean isComplete;
     private Customer c;

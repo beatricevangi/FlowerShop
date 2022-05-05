@@ -3,19 +3,16 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class LoginMenu implements Menu {
+    private MessageDigest md;
 
-    MessageDigest md;
     public LoginMenu() {
         try {
             md = MessageDigest.getInstance("SHA-256");
-
         }
         catch (NoSuchAlgorithmException e){
             System.err.print("ERROR");
         }
     }
-
-
 
     @Override
     public void show() {
@@ -57,10 +54,10 @@ public class LoginMenu implements Menu {
                         Program.getInstance().login(name, encode(pass));
                     }
                     if (Program.getInstance().getCurrentUser() instanceof Florist) {
-                        Program.getInstance().setMenu(new MenuFlorist());
+                        Program.getInstance().setMenu(new FloristMenu());
                     }
                     if (Program.getInstance().getCurrentUser() instanceof Customer) {
-                        Program.getInstance().setMenu(new MenuCustomer());
+                        Program.getInstance().setMenu(new CustomerMenu());
                     }
                     quit = true;
                     break;
@@ -71,10 +68,10 @@ public class LoginMenu implements Menu {
                         submit();
                     }
                     if (Program.getInstance().getCurrentUser() instanceof Florist) {
-                        Program.getInstance().setMenu(new MenuFlorist());
+                        Program.getInstance().setMenu(new FloristMenu());
                     }
                     if (Program.getInstance().getCurrentUser() instanceof Customer) {
-                        Program.getInstance().setMenu(new MenuCustomer());
+                        Program.getInstance().setMenu(new CustomerMenu());
                     }
                     quit = true;
                     break;

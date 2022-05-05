@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Program {
     public static Program p = new Program();
-    private final ArrayList<User> users;
+    private ArrayList<User> users;
     private User currentUser;
     private Menu menu;
     private CustomerNotifier cn;
@@ -93,8 +93,6 @@ public class Program {
         }
     }
 
-
-
     public void initUsers() {
         String pathToCSV = "users.csv";
         try {
@@ -126,7 +124,7 @@ public class Program {
                     for (String[] strings : csvBody) {
                         if(Integer.parseInt(strings[0]) == u.getId()){
                             Message msg = new Message(((Customer)u), strings[1], strings[2], Boolean.parseBoolean(strings[3]));
-                            ((Customer) u).deliverMessage(msg);
+                            ((Customer) u).receiveMessage(msg);
                         }
                     }
                 }

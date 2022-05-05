@@ -18,17 +18,17 @@ public class Box {
         }
     }
 
+    public void setOrderStatus(String s){
+        o.setStatus(s);
+        OrderList.getInstance().refreshCSV(o);
+    }
+
     public boolean isClosed() {
         return isClosed;
     }
 
     public void close() {
         isClosed = true;
-    }
-
-    public void setOrderStatus(String s){
-        o.setStatus(s);
-        OrderList.getInstance().refreshCSV(o);
     }
 
 }

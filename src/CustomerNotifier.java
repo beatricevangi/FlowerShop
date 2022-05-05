@@ -9,18 +9,21 @@ public class CustomerNotifier implements Observer {
         subjects = new ArrayList<>();
     }
 
+    public void addSubject(Subject s){
+        subjects.add(s);
+    }
 
     @Override
     public void update(Object obj) { //obj è ordine, valutare se passare altro for the designn
         if (obj instanceof Order){
-            sendMail((Order) obj);
+            sendMessage((Order) obj);
         }
         else {
             System.out.println("Order not received.");
         }
     }
 
-    public void sendMail(Order o){
+    public void sendMessage(Order o){
         Message m = null;
         if (Objects.equals(o.getStatus(), "Processing")){
             m = new Message(o.getCustomer(), "New Order: #" + o.getId()+ ".", "Dear " +
@@ -44,10 +47,7 @@ public class CustomerNotifier implements Observer {
                         "                                                                       Sincerely, Flower shop.");
             }
         }
-        o.getCustomer().deliverMessage(m);
+        o.getCustomer().receiveMessage(m);
     }
 
-    public void addSubject(Subject s){
-        subjects.add(s);
-    }
 }

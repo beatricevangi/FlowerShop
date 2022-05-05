@@ -4,11 +4,13 @@ public abstract class Product {
 
     Bouquet getComposite() { return (Bouquet) this; }
 
-    //protected abstract Product clone();
+    protected abstract Product clone();
+
 
     public String getName() {
         return name;
     }
+
 
     public float getPrice() {
         return price;

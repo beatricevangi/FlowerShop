@@ -7,7 +7,7 @@ import java.util.List;
 import java.lang.String;
 
 public class OrderList{
-    public static OrderList ol = new OrderList();
+    public static OrderList instance = new OrderList();
     private ArrayList<Order> orders;
 
 
@@ -18,7 +18,7 @@ public class OrderList{
     }
 
     public static synchronized OrderList getInstance() {
-        return ol;
+        return instance;
     }
 
     public int getSize() {

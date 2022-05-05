@@ -9,9 +9,9 @@ import java.util.List;
 
 public class Storage implements Subject{
     private ArrayList<Pair<String, Integer>> quantity;
-    public ArrayList<Observer> observers;
+    private ArrayList<Observer> observers;
     private ArrayList<Product> storage;
-    int minimum = 15;
+    private int minimum = 15;
 
     public Storage(){
         quantity = new ArrayList<>();
@@ -88,17 +88,17 @@ public class Storage implements Subject{
             if (name.equals(stringIntegerPair.first)) {
                 if (flag.equals("add")){
                     stringIntegerPair.second++;
-                    refreshCSV(name, stringIntegerPair.second);
+                    refreshStorageCSV(name, stringIntegerPair.second);
                 }
                 if (flag.equals("remove")){
                     stringIntegerPair.second--;
-                    refreshCSV(name, stringIntegerPair.second);
+                    refreshStorageCSV(name, stringIntegerPair.second);
                 }
             }
         }
     }
 
-    public void refreshCSV(String str, int q){
+    public void refreshStorageCSV(String str, int q){
         String pathToCSV = "storage.csv";
         File inputFile = new File(pathToCSV);
         try {

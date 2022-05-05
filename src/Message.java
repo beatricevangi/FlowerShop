@@ -1,6 +1,5 @@
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.List;
@@ -10,7 +9,6 @@ public class Message {
     private String text;
     private boolean read;
     private Customer c;
-
 
     public Message(Customer c, String heading, String text) { // costruttore per creare nuovi messaggi da 0
         this.heading = heading;
@@ -27,18 +25,18 @@ public class Message {
         this.read = read;
     }
 
-    public void display() {
-        System.out.println(heading);
-        System.out.println(text + "\n");
-        setRead(true);
-    }
-
     public boolean isRead() {
         return read;
     }
 
     public void setRead(boolean read) {
         this.read = read;
+    }
+
+    public void display() {
+        System.out.println(heading);
+        System.out.println(text + "\n");
+        setRead(true);
     }
 
     public void writeMessageOnCSV(boolean flag) {

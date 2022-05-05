@@ -30,17 +30,16 @@ public class InboxMenu implements Menu {
                     break;
 
                 case 2:
-                    currentCustomer.cleanInbox();
+                    currentCustomer.clearInbox();
                     System.out.println("Inbox emptied successfully.");
                     break;
 
                 case 0:
-                    Program.getInstance().setMenu(new MenuCustomer());
+                    Program.getInstance().setMenu(new CustomerMenu());
                     quit = true;
                     break;
             }
         } while (!quit);
     }
-
 
 }
