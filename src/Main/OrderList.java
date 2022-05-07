@@ -40,6 +40,10 @@ public class OrderList{
         return null;
     }
 
+    public Order getLastOrder(){
+        return orders.get(getSize()-1);
+    }
+
     public void putOrder(Order o) {
         this.orders.add(o);
         o.notify(null);

@@ -52,6 +52,7 @@ public class Program {
                     u.setLogged(true);
                     currentUser = getUser(email);
                     System.out.println("Welcome to the Flower Shop, " +  currentUser.getName() + "!");
+                    b = true;
                 } else {
                     System.out.println("Wrong password!");
                     currentUser = null;

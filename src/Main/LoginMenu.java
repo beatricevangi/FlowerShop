@@ -134,7 +134,7 @@ public class LoginMenu implements Menu {
             Program.getInstance().signIn(a, email, name, surname, address, encoded);
     }
 
-    private String encode(String password){
+    public String encode(String password){
         md.update(password.getBytes());
         byte[] messageDigestSHA256 = md.digest();
         StringBuilder stringBuffer = new StringBuilder();

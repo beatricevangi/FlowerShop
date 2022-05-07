@@ -58,6 +58,7 @@ class FloristTest {
     }
 
     @Test
+    @DisplayName("Test that checks that products of the order are correct")
     void testFillOrder() {
         Box b = f.fillOrder();
         assertNotNull(b);

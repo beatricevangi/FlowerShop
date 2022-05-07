@@ -1,6 +1,11 @@
-import Main.Customer;
+import Main.*;
+
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,19 +27,29 @@ class CustomerTest {
     }
 
     @Test
-    void viewInbox() {
-
+    @DisplayName("Test that order has the right size and that it has the same products of the last order in orderlist")
+    void testCreateOrder() {
+        ArrayList<Integer> testnum = new ArrayList<>();
+        int num;
+        for(int i = 0; i < 5; i++) {
+            num = (int) (Math.random() * 15);
+            testnum.add(num);
+        }
+        num = OrderList.getInstance().getSize();
+        c.createOrder(testnum);
+        assertEquals(num+1, OrderList.getInstance().getSize());
+        Order o = OrderList.getInstance().getLastOrder();
+        assertNotNull(o);
+        assertEquals(c, o.getCustomer());
+        assertEquals("Processing", o.getStatus());
+        for(int i = 0; i < o.getComponents().size(); i++)
+            assertEquals(Catalog.getInstance().getFloristProduct(testnum.get(i)).getName(),
+                    o.getComponents().get(i).getName());
     }
 
     @Test
-    void clearInbox() {
+    void testInvalidInputCreateOrder() {
+        assertThrows(Exception.class, () -> c.chooseProduct());
     }
 
-    @Test
-    void createOrder() {
-    }
-
-    @Test
-    void chooseProduct() {
-    }
 }
