@@ -44,7 +44,8 @@ public class Program {
         }
     }
 
-    public void login(String email, String encoded) {
+    public boolean login(String email, String encoded) {
+        boolean b = false;
         for (User u : users) {
             if (u.getEmail().equals(email)) {
                 if (Objects.equals(u.getHashPass(), encoded)) {
@@ -56,9 +57,11 @@ public class Program {
                 } else {
                     System.out.println("Wrong password!");
                     currentUser = null;
+                    b = false;
                 }
             }
         }
+        return b;
     }
 
     public void logout(){

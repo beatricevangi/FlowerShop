@@ -35,7 +35,7 @@ public class CustomerMenu implements Menu{
                     break;
 
                 case 2:
-                    currentCustomer.createOrder();
+                    currentCustomer.placeOrder();
                     System.out.println("Order placed successfully.");
                     break;
 

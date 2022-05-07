@@ -14,8 +14,9 @@ class CustomerTest {
 
     @BeforeAll
     static void setUp(){
+        Program.getInstance().initUsers();
         c = new Customer("testemail", "testname", "testsurname", "testaddress",
-                "a2242ead55c94c3deb7cf2340bfef9d5bcaca22dfe66e646745ee4371c633fc8", false);
+                "a2242ead55c94c3deb7cf2340bfef9d5bcaca22dfe66e646745ee4371c633fc8", true);
         assertNotNull(c);
         assertAll("c",
                 () -> assertEquals("testemail", c.getEmail() ),

@@ -1,7 +1,7 @@
 package Main;
 
 public class Supplier implements Observer {
-    private Storage s;
+    private Subject s;
 
     public Supplier(Storage s) {
         this.s = s;
@@ -19,7 +19,7 @@ public class Supplier implements Observer {
         for (int tmp = 0; tmp < 30; tmp++) {
             Product p = c.cloneCatalogItem(str, false);
             p.setPrice(p.getPrice()/(float)0.35);
-            s.restock(p);
+            ((Storage)s).restock(p);
         }
     }
 
