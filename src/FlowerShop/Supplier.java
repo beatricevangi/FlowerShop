@@ -14,7 +14,6 @@ public class Supplier implements Observer {
     }
 
     public void sendItem(String str) {
-        // obj in realtà sarà una stringa che è il nome del fiore che mandiamo
         Catalog c = Catalog.getInstance();
         for (int tmp = 0; tmp < 30; tmp++) {
             Product p = c.cloneCatalogItem(str, false);

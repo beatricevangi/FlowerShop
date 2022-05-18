@@ -15,6 +15,7 @@ public class Customer extends User {
         this.hashpass = pass;
         this.logged = logged;
         this.id = Program.getInstance().getNumUsers();
+        this.inbox = new ArrayList<>();
     }
 
     public void receiveMessage(Message m) {
@@ -22,21 +23,32 @@ public class Customer extends User {
     }
 
     public void viewInbox() {
-        for (Message m : inbox) {
-            if (!m.isRead()) {
-                System.out.println("NEW MESSAGE!");
-            }
-            m.display();
-        }
         if (inbox.size() == 0)
             System.out.println("There are no messages.\n");
+        else {
+            for (Message m : inbox) {
+                if (!m.isRead()) {
+                    System.out.println("NEW MESSAGE!");
+                }
+                m.display();
+            }
+            getMessage().writeMessageOnCSV("read");
+        }
     }
 
     public void clearInbox() {
         if (!inbox.isEmpty()) {
-            inbox.get(0).writeMessageOnCSV(false);
+            inbox.get(0).writeMessageOnCSV("clear");
             inbox = new ArrayList<>();
         }
+    }
+
+    public int getInboxSize() {
+        return inbox.size();
+    }
+
+    public Message getMessage() {
+        return inbox.get(0);
     }
 
     public void placeOrder() {
@@ -48,7 +60,13 @@ public class Customer extends User {
             System.out.println("Product added to the order. Would you like to add any other item? (y/n)");
             Scanner input = new Scanner(System.in);
             char c = input.findInLine(".").charAt(0);
-            if (c == 'n'){
+            while (c != 'y' && c != 'n') {
+                System.err.println("Invalid input.");
+                System.out.println("Would you like to add any other item? (y/n)");
+                input = new Scanner(System.in);
+                c = input.findInLine(".").charAt(0);
+            }
+            if (c == 'n') {
                 done = true;
             }
         }

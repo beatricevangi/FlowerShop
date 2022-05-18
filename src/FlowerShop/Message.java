@@ -14,15 +14,17 @@ public class Message {
     private boolean read;
     private Customer c;
 
-    public Message(Customer c, String heading, String text) { // costruttore per creare nuovi messaggi da 0
+    public Message(Customer c, String heading, String text) {
+        // costruttore per creare nuovi messaggi da 0
         this.heading = heading;
         this.text = text;
         this.read = false;
         this.c = c;
-        writeMessageOnCSV(true);
+        writeMessageOnCSV("new");
     }
 
-    public Message(Customer c, String heading, String text, boolean read) { // costruttore per leggere (init)
+    public Message(Customer c, String heading, String text, boolean read) {
+        // costruttore per leggere (init)
         this.c = c;
         this.heading = heading;
         this.text = text;
@@ -35,6 +37,7 @@ public class Message {
 
     public void setRead(boolean read) {
         this.read = read;
+
     }
 
     public void display() {
@@ -48,7 +51,7 @@ public class Message {
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
-            if (flag) {
+            if (Objects.equals(flag, "new")) {
                 String[] newmessage = {String.valueOf(this.c.getId()), this.heading, this.text, String.valueOf(this.read)};
                 csvBody.add(newmessage);
             }

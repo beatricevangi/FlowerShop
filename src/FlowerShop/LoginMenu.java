@@ -84,52 +84,58 @@ public class LoginMenu implements Menu {
     public void submit() {
         Scanner inLog = new Scanner(System.in);
         System.out.println("REGISTRATION FORM");
-        System.out.println("Are you a florist or a customer? ");
-        String a = inLog.nextLine();
+        String a = null;
         String email = null;
         String name = null;
         String surname = null;
         String pass;
         String address = null;
         String encoded = null;
+        boolean flag = false;
+        do {
+            System.out.println("Are you a florist or a customer? ");
+            a = inLog.nextLine();
+            switch (a) {
 
-        switch (a) {
+                case "florist":
+                    System.out.println("Insert Email: ");
+                    email = inLog.nextLine();
+                    System.out.println("Insert Name: ");
+                    name = inLog.nextLine();
+                    System.out.println("Insert Surname: ");
+                    surname = inLog.nextLine();
+                    System.out.println("Insert Address (optional): ");
+                    address = inLog.nextLine();
+                    System.out.println("Create a Password: ");
+                    pass = inLog.nextLine();
+                    encoded = encode(pass);
+                    flag = true;
+                    break;
 
-            case "florist":
-                System.out.println("Insert Email: ");
-                email = inLog.nextLine();
-                System.out.println("Insert Name: ");
-                name = inLog.nextLine();
-                System.out.println("Insert Surname: ");
-                surname = inLog.nextLine();
-                System.out.println("Insert Address (optional): ");
-                address = inLog.nextLine();
-                System.out.println("Create a Password: ");
-                pass = inLog.nextLine();
-                encoded = encode(pass);
-                break;
 
+                case "customer":
+                    System.out.println("Insert Email: ");
+                    email = inLog.nextLine();
+                    System.out.println("Insert Name: ");
+                    name = inLog.nextLine();
+                    System.out.println("Insert Surname: ");
+                    surname = inLog.nextLine();
+                    System.out.println("Insert Address: ");
+                    address = inLog.nextLine();
+                    System.out.println("Create a Password: ");
+                    pass = inLog.nextLine();
+                    encoded = encode(pass);
+                    flag = true;
+                    break;
 
-            case "customer":
-                System.out.println("Insert Email: ");
-                email = inLog.nextLine();
-                System.out.println("Insert Name: ");
-                name = inLog.nextLine();
-                System.out.println("Insert Surname: ");
-                surname = inLog.nextLine();
-                System.out.println("Insert Address: ");
-                address = inLog.nextLine();
-                System.out.println("Create a Password: ");
-                pass = inLog.nextLine();
-                encoded = encode(pass);
-                break;
+                default:
+                    System.err.println("You have to be either a florist or a customer.");
 
-            default:
-                System.err.println("You have to be either a florist or a customer.");
+            }
+        } while (!flag);
 
-        }
         if (!Program.getInstance().checkEmail(email))
-            Program.getInstance().signIn(a, email, name, surname, address, encoded);
+            Program.getInstance().signUp(a, email, name, surname, address, encoded);
     }
 
     public String encode(String password) {

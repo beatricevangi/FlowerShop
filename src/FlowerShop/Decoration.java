@@ -9,6 +9,6 @@ public class Decoration extends Product{
 
     @Override
     protected Decoration clone(){
-        return new Decoration(new String(this.name), this.price);
+        return new Decoration(this.name, this.price);
     }
 }

@@ -1,7 +1,6 @@
 package FlowerShop;
 
 import com.opencsv.CSVReader;
-
 import java.util.ArrayList;
 import java.io.*;
 import java.util.*;
@@ -10,7 +9,6 @@ public class Catalog {
     private final ArrayList<Product> floristcat = new ArrayList<>();
     private final ArrayList<Product> suppliercat = new ArrayList<>();
     public static Catalog cat = new Catalog();
-
 
     private Catalog() {
         try {
@@ -34,7 +32,6 @@ public class Catalog {
                 addToFloristCatalog(d);
                 addToSupplierCatalog(d2);
             }
-
             reader.close();
 
             pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/bouquet.csv";
@@ -48,13 +45,10 @@ public class Catalog {
                 }
                 addToFloristCatalog(b);
             }
-
-
         } catch (Exception e) {
             System.err.println("Error: Csv Exception");
         }
     }
-
 
     public static Catalog getInstance() {
         return cat;

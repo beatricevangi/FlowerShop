@@ -32,7 +32,7 @@ class ProgramTest {
     @Test
     @DisplayName("Test that registers and logs in a new user")
     void signIn() {
-        Program.getInstance().signIn("customer", "mikebuongiorno@rai1.it", "mike", "buongiorno",
+        Program.getInstance().signUp("customer", "mikebuongiorno@rai1.it", "mike", "buongiorno",
                 "via vai di mike buongiorno", lm.encode("allegria"));
 
         boolean b = Program.getInstance().login("mikebuongiorno@rai1.it", lm.encode("allegria"));

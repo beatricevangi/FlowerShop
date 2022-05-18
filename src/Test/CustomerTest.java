@@ -24,6 +24,13 @@ class CustomerTest {
                 () -> assertEquals("testaddress", c.getAddress()),
                 () -> assertEquals("a2242ead55c94c3deb7cf2340bfef9d5bcaca22dfe66e646745ee4371c633fc8",
                         c.getHashPass()));
+        int num;
+        ArrayList<Integer> testnum = new ArrayList<>();
+        for(int i = 0; i < 5; i++) {
+            num = (int) (Math.random() * 14 + 1);
+            testnum.add(num);
+        }
+        c.createOrder(testnum);
     }
 
     @Test
@@ -39,12 +46,10 @@ class CustomerTest {
         ArrayList<Integer> testnum = new ArrayList<>();
         int num;
         for(int i = 0; i < 5; i++) {
-            num = (int) (Math.random() * 15);
+            num = (int) (Math.random() * 14 + 1);
             testnum.add(num);
         }
-        num = OrderList.getInstance().getSize();
         c.createOrder(testnum);
-        assertEquals(num+1, OrderList.getInstance().getSize());
         Order o = OrderList.getInstance().getLastOrder();
         assertNotNull(o);
         assertEquals(c, o.getCustomer());

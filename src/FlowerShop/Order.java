@@ -86,7 +86,6 @@ public class Order implements Subject{
         isComplete = c;
     }
 
-
     @Override
     public void notify(Object obj) {
         for (Observer o : observers) {

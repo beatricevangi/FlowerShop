@@ -2,7 +2,7 @@ package FlowerShop;
 import java.util.Scanner;
 
 public class InboxMenu implements Menu {
-    private Customer currentCustomer = null;
+    private Customer currentCustomer;
 
     public InboxMenu(Customer currentCustomer) {
         this.currentCustomer = currentCustomer;

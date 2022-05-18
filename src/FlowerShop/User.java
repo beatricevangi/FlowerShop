@@ -30,10 +30,6 @@ public abstract class User {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getAddress() { return address; }
 
     public void setAddress(String address){ this.address = address; }
@@ -48,10 +44,6 @@ public abstract class User {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public boolean isLogged() {

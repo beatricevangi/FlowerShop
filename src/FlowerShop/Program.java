@@ -38,7 +38,6 @@ public class Program {
         initInboxes();
         createCatalog();
         OrderList.getInstance().init();
-
         while (!quit) {
             menu.show();
         }
@@ -68,7 +67,8 @@ public class Program {
         currentUser = null;
     }
 
-    public void signIn(String category, String email, String name, String surname, String address, String encoded) {
+    // registrazione
+    public void signUp(String category, String email, String name, String surname, String address, String encoded) {
         if (category.equals("customer")) {
             currentUser = new Customer(email, name, surname, address, encoded, true);
             users.add(currentUser);
@@ -181,12 +181,13 @@ public class Program {
         return users.size();
     }
 
-
     public void setQuit(boolean quit) {
         this.quit = quit;
     }
 
-    public CustomerNotifier getCustomerNotifier(){return cn;}
+    public CustomerNotifier getCustomerNotifier(){
+        return cn;
+    }
 
     public void hold(int seconds){
         try{

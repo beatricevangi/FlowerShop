@@ -30,7 +30,6 @@ public class CustomerMenu implements Menu{
 
             switch (menuItem) {
                 case 1:
-                    System.out.println("Here's your order list: \n");
                     OrderList.getInstance().printCustomerOrders(currentCustomer);
                     break;
 

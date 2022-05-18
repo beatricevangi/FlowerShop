@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@SuppressWarnings("rawtypes")
 public class Storage implements Subject {
 
     public int getQuantity(String str) {
@@ -146,7 +147,7 @@ public class Storage implements Subject {
 
     public void display(){
         System.out.println("\n");
-        System.out.println("Storage items: ");
+        System.out.println("Storage items:");
         for (Pair<String, Integer> stringIntegerPair : quantity) {
             System.out.println("-" + stringIntegerPair.first + "          " + stringIntegerPair.second);
         }

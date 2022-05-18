@@ -8,13 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.lang.String;
 
-public class OrderList{
+public class OrderList {
     public static OrderList instance = new OrderList();
     private ArrayList<Order> orders;
 
-
-    // Orderlist viene inizializzata nel metodo init(), che viene chiamato(dopo aver chiamato prima getInstance() che
-    // costruisce un orderlist VUOTA) nel run() di program.
     private OrderList() {
         orders = new ArrayList<>();
     }
@@ -40,8 +37,8 @@ public class OrderList{
         return null;
     }
 
-    public Order getLastOrder(){
-        return orders.get(getSize()-1);
+    public Order getLastOrder() {
+        return orders.get(getSize() - 1);
     }
 
     public void putOrder(Order o) {
@@ -54,7 +51,7 @@ public class OrderList{
         for (Order o : orders) {
             o.displayOrderFloristPOV();
         }
-        if (orders.size()==0){
+        if (orders.size() == 0) {
             System.out.println("No orders to show.");
         }
     }
@@ -74,17 +71,13 @@ public class OrderList{
 
             for (String[] strings : csvBody) {
                 Customer c = Program.getInstance().getCustomerFromId(Integer.parseInt(strings[2]));
-                o = new Order (c, Boolean.parseBoolean(strings[0]), strings[3]);
+                o = new Order(c, Boolean.parseBoolean(strings[0]), strings[3]);
                 for (int j = 5; j < strings.length; j++) {
                     Product a = Catalog.getInstance().cloneCatalogItem(strings[j], true);
                     o.addProduct(a);
                 }
-                if (o != null) {
-                    orders.add(o);
-                    Program.getInstance().getCustomerNotifier().addSubject(o);
-                } else {
-                    System.err.println("Errore nullo scem8.");
-                }
+                orders.add(o);
+                Program.getInstance().getCustomerNotifier().addSubject(o);
             }
         } catch (Exception i) {
             System.err.println("Error: init on OrderList while reading csv.");
@@ -95,15 +88,19 @@ public class OrderList{
         boolean flag = false;
         for (Order o : orders) {
             if (o.getCustomer() == c) {
+                if (!flag) {
+                    System.out.println("Here's your order list: \n");
+                }
                 flag = true;
                 o.displayOrderCustomerPOV();
             }
         }
-        if (!flag){
+        if (!flag) {
             System.out.println("No orders to show!");
         }
     }
 
+    // aggiorna il csv
     public void writeOrderOnCSV(Order order) {
         String pathToCSV = "orders.csv";
         try {
