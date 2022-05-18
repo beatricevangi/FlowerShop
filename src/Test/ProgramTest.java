@@ -1,5 +1,5 @@
-import Main.LoginMenu;
-import Main.Program;
+import FlowerShop.LoginMenu;
+import FlowerShop.Program;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -75,10 +75,9 @@ class ProgramTest {
         assertTrue(b);
     }
 
-
     @Test
     @DisplayName("Test that checks if an email is already in our program given an invalid email")
-    void testCheckInexistentEmail() {
+    void testCheckNonexistentEmail() {
         boolean b = Program.getInstance().checkEmail("emailinesistente@gmail.com");
         assertFalse(b);
     }

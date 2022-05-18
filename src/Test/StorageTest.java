@@ -1,5 +1,5 @@
-import Main.Product;
-import Main.Storage;
+import FlowerShop.Product;
+import FlowerShop.Storage;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +19,7 @@ class StorageTest {
     }
 
     @Test
-    @DisplayName("Test that checks if the returned value is a product name :)")
+    @DisplayName("Test that checks if the returned value is a product name")
     void testGetItem() {
         Product p = storage.getItem("lily");
         assertNotNull(p);
@@ -27,7 +27,7 @@ class StorageTest {
     }
 
     @Test
-    @DisplayName("A storage test that checks if we update the quantity")
+    @DisplayName("A storage test that checks if the quantity is updated")
     void testRefresh() {
         int initial_q = storage.getQuantity("lily");
         storage.getItem("lily");

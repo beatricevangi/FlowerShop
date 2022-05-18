@@ -1,4 +1,4 @@
-import Main.*;
+import FlowerShop.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,7 +32,7 @@ class OrderListTest {
     }
 
     @Test
-    @DisplayName("Test that checks if getOrder actually returns the last")
+    @DisplayName("Test that checks if getOrder actually returns the last Order")
     void testGetOrder() {
         Order o = OrderList.getInstance().getOrder();
         assertNotNull(o);
