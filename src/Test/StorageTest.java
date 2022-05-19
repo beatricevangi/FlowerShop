@@ -1,5 +1,5 @@
-import FlowerShop.Product;
-import FlowerShop.Storage;
+import flowerShop.Product;
+import flowerShop.Storage;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;

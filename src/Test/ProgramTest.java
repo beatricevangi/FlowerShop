@@ -1,5 +1,5 @@
-import FlowerShop.LoginMenu;
-import FlowerShop.Program;
+import flowerShop.LoginMenu;
+import flowerShop.Program;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
