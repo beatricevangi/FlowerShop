@@ -150,7 +150,7 @@ public class Program {
         return false;
     }
 
-    public static synchronized Program getInstance() {
+    public static Program getInstance() {
         return p;
     }
 
