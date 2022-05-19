@@ -61,7 +61,7 @@ public class OrderList {
     }
 
     public void init() {
-        String pathToCSV = "orders.csv";
+        String pathToCSV = "csv/orders.csv";
         List<String[]> csvBody;
         CSVReader reader;
         Order o;
@@ -102,7 +102,7 @@ public class OrderList {
 
     // aggiorna il csv
     public void writeOrderOnCSV(Order order) {
-        String pathToCSV = "orders.csv";
+        String pathToCSV = "csv/orders.csv";
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
@@ -133,7 +133,7 @@ public class OrderList {
 
     //aggiorna il csv
     public void refreshCSV(Order o) {
-        String pathToCSV = "orders.csv";
+        String pathToCSV = "csv/orders.csv";
         File inputFile = new File(pathToCSV);
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));

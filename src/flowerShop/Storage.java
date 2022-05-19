@@ -36,7 +36,7 @@ public class Storage implements Subject {
     }
 
     public void initStorage(){
-        String pathToCSV = "storage.csv";
+        String pathToCSV = "csv/storage.csv";
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
@@ -112,7 +112,7 @@ public class Storage implements Subject {
     }
 
     public void refreshStorageCSV(String str, int q){
-        String pathToCSV = "storage.csv";
+        String pathToCSV = "csv/storage.csv";
         File inputFile = new File(pathToCSV);
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));

@@ -12,7 +12,7 @@ public class Catalog {
 
     private Catalog() {
         try {
-            String pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/flower.csv";
+            String pathToCSV = "csv/flower.csv";
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
             for (String[] strings : csvBody) {
@@ -23,7 +23,7 @@ public class Catalog {
             }
             reader.close();
 
-            pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/decoration.csv";
+            pathToCSV = "csv/decoration.csv";
             reader = new CSVReader(new FileReader(pathToCSV));
             csvBody = reader.readAll();
             for (String[] strings : csvBody) {
@@ -34,7 +34,7 @@ public class Catalog {
             }
             reader.close();
 
-            pathToCSV = "/home/beatrice/Scrivania/VICARIO/FlowerShop/bouquet.csv";
+            pathToCSV = "csv/bouquet.csv";
             reader = new CSVReader(new FileReader(pathToCSV));
             csvBody = reader.readAll();
             for (String[] strings : csvBody) {

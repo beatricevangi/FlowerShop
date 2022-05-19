@@ -47,7 +47,7 @@ public class Message {
     }
 
     public void writeMessageOnCSV(String flag) {
-        String pathToCSV = "messages.csv";
+        String pathToCSV = "csv/messages.csv";
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();

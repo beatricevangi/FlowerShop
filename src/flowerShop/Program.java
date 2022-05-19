@@ -81,7 +81,7 @@ public class Program {
     }
 
     public void writeUserOnCSV(String category, User currentUser) {
-        String pathToCSV = "users.csv";
+        String pathToCSV = "csv/bouquet.csv";
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
@@ -100,7 +100,7 @@ public class Program {
     }
 
     public void initUsers() {
-        String pathToCSV = "users.csv";
+        String pathToCSV = "csv/users.csv";
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
@@ -121,7 +121,7 @@ public class Program {
     }
 
     public void initInboxes(){
-        String pathToCSV = "messages.csv";
+        String pathToCSV = "csv/messages.csv";
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
