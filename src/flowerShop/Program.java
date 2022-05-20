@@ -81,7 +81,7 @@ public class Program {
     }
 
     public void writeUserOnCSV(String category, User currentUser) {
-        String pathToCSV = "csv/bouquet.csv";
+        String pathToCSV = "csv/users.csv";
         try {
             CSVReader reader = new CSVReader(new FileReader(pathToCSV));
             List<String[]> csvBody = reader.readAll();
